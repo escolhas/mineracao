@@ -1,0 +1,1170 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <title>Mineração | Instituto Escolhas</title>
+  <meta name="description" content='Entenda como a expansão da metrópole sobre áreas de florestas e agricultura impacta o bem-estar dos seus moradores e como a agricultura pode contribuir para melhorar as condições de vida na região.' />
+  <meta name="viewport" content="width=1024" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gravitas+One:wght@400&family=IBM+Plex+Sans:wght@100;400;500;600;700&display=swap" rel="stylesheet">
+
+  
+    <script src="/static/d3.v7.min.48e5217ed02f.js?tag=c5365f2070bec9" charset="utf-8"></script>
+    <script src="/static/d3-sankey.min.737a0964b7aa.js?tag=c5365f2070bec9" charset="utf-8"></script>
+
+
+  <link rel="stylesheet" href="/static/normalize.0d05960530c2.css?tag=c5365f2070bec9" />
+  <link rel="stylesheet" href="/static/website/index.bc06e92272ea.css?tag=c5365f2070bec9" />
+
+  
+<style>
+.wrapper {
+    margin-top: 70px;
+}
+#tooltip {
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
+    position: absolute;
+    opacity: 0;
+    background-color: #fff;
+    /* border-radius: 3px; */
+    /* border: 1px solid #333; */
+    max-width: 300px;
+    /* max-height: 100px; */
+    /* padding: 10px; */
+    filter: drop-shadow(2px 2px 1px rgba(126, 126, 126, 0.5));
+}
+#tooltip .title {
+    border-bottom: 2px solid #000;
+    padding: 10px;
+    margin: 0;
+}
+#tooltip h4 {
+    font-size: 0.85rem;
+    margin: 0;
+    padding: 0;
+}
+#tooltip .label {
+    font-size: 0.6rem;
+    margin: 0;
+    padding: 10px 10px 0;
+}
+#tooltip .value {
+    font-size: 0.9rem;
+    margin: 5px 10px 10px;
+    padding: 0px;
+}
+.title-bar {
+    background-color: #000;
+}
+.title-bar-container {
+    display: flex;
+    flex-direction: row;
+}
+.title-bar-container > * {
+    flex-basis: 50%;
+}
+.title-bar h1{
+    background-color: #000;
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: unset;
+}
+.title-bar nav {}
+.title-bar nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    align-items: stretch;
+    height: 100%;;
+}
+.title-bar nav ul li {
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    align-items: center;
+    display: flex;
+    /* float: left; */
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    color: #929292;
+
+}
+.title-bar nav ul li a {
+    text-decoration: none;
+    color: #929292;
+}
+.title-bar nav ul li a:hover {
+    color: #fff;
+}
+.title-bar nav ul li a span {
+    display: block;
+
+}
+
+.title-bar nav ul li.active a {
+    color: #fff;
+    font-weight: bolder;
+}
+#canvas {
+    margin: 0 auto;
+    display: block;
+}
+.container,
+.title-bar-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.title-bar{
+    min-width: 1280px;
+}
+.footnote p {
+    float: left;
+    margin: 20px 10px;
+    text-align: justify;
+}
+</style>
+
+
+</head>
+<body class="sankey-page">
+
+<div id="top-menu">
+  <div class="top-menu-container container-wide">
+    <div class="logo">
+      <img src="/static/website/logo-escolhas.380c67b84411.svg?tag=c5365f2070bec9" />
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/">Os números</a></li>
+        <li><a href="/#secao-a-fraude">A fraude</a></li>
+        <li><a href="/#secao-as-consequencias">As consequências</a></li>
+        <li><a href="/#secao-a-mudanca">A mudança</a></li>
+        <li><a href="/o-fluxo-do-ouro-2015.html">Os fluxos</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="wrapper">
+    
+<div class="title-bar">
+    <div class="container title-bar-container">
+        <div>
+            <h1>O fluxo do ouro</h1>
+        </div>
+        <nav>
+            <ul>
+                <li ><a href="/o-fluxo-do-ouro-2015.html"><span>2015</span></a></li>
+                <li ><a href="/o-fluxo-do-ouro-2016.html"><span>2016</span></a></li>
+                <li ><a href="/o-fluxo-do-ouro-2017.html"><span>2017</span></a></li>
+                <li ><a href="/o-fluxo-do-ouro-2018.html"><span>2018</span></a></li>
+                <li ><a href="/o-fluxo-do-ouro-2019.html"><span>2019</span></a></li>
+                <li ><a href="/o-fluxo-do-ouro-2020.html"><span>2020</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="container">
+    <svg id="canvas"></svg>
+</div>
+<div class="container footnote">
+    <p class="label">
+        * Note que não é possível relacionar todo o volume de ouro produzido pelos
+        estados com as exportações estaduais. Isso porque alguns estados exportam,
+        mas não produzem ouro. Logo, não há como garantir de onde veio o ouro
+        exportado por eles. São Paulo, por exemplo, foi o segundo maior exportador
+        em 2020, mas não produziu um grama sequer.<br>
+        ** A primeira coluna mostra áreas com indícios de extração de ouro por estado, indicando a presença da atividade em Terras Indígenas e Unidades de Conservação - onde ela não é permitida, mas acontece mesmo sem autorizações ou eventuais registros. Os dados são do MapBiomas.
+    </p>
+</div>
+<div id="tooltip"></div>
+
+</div>
+
+
+    <script type="text/javascript">
+
+            const margin = 10;
+            const width = 1280;
+            const height = 900;
+            const titlesHeight = 80;
+            const svgBackground = "#f2f0ec";
+            const svgBorder = "1px solid #333";
+            const nodeWidth = 150;
+            const nodePadding = 0;
+            const nodeOpacity = 0.8;
+            const linkOpacity = 0.5;
+            const labelFontSize = 12;
+            const linkColorDefault = "#d6d6d6";
+            const linkColorHoverLink = "#566063";
+            const linkColorHoverNode =  "#566063";
+            const nodeColorDefault = "#fff";
+            const nodeColorHoverLink = "#e8d168";
+            const nodeColorHoverNode = "#e8d168";
+            const nodeStrokeColor =  "#576063";
+            const areaNodeColorHoverNode = "#dbc9c5";
+            const areaNodeColorDefault = "#c77967";
+            const nodeStrokeWidth = 0.3;
+            const arrow = " > ";
+            const nodeAlignment = d3.sankeyCenter;
+            const path = d3.sankeyLinkHorizontal();
+
+            
+            const titles = {'temas-from-ausencia-irregularidade-ton': 'Ausência de irregularidades identificadas', 'temas-to-amazonas': 'Amazonas', 'temas-from-ti-uc-ton': 'Títulos em TIs ou UCs', 'temas-from-titulos-fantasmas-ton': '“Títulos fantasmas”', 'temas-from-extrapola-ton': 'Títulos com indícios de extração além dos limites', 'temas-from-sem-titulos-ton': 'Ouro sem a informação dos títulos de origem', 'temas-from-sem-registros': 'Ouro exportado sem registros na produção oficial', 'temas-to-amapa': 'Amapá', 'temas-to-bahia': 'Bahia', 'temas-to-goias': 'Goiás', 'temas-to-maranhao': 'Maranhão', 'temas-to-minas-gerais': 'Minas Gerais', 'temas-to-mato-grosso': 'Mato Grosso', 'temas-to-para': 'Pará', 'temas-to-pernambuco': 'Pernambuco', 'temas-to-parana': 'Paraná', 'temas-to-rio-grande-do-norte': 'Rio Grande do Norte', 'temas-to-rondonia': 'Rondônia', 'temas-to-roraima': 'Roraima', 'temas-to-santa-catarina': 'Santa Catarina', 'temas-to-tocantins': 'Tocantins', 'temas-to-sem-informacao': 'Sem informação', 'temas-to-sem-informacao-origem': 'Sem informação origem', 'exportacao-from-alagoas': 'Alagoas', 'exportacao-to-belgica': 'Bélgica', 'exportacao-from-amazonas': 'Amazonas', 'exportacao-to-alemanha': 'Alemanha', 'exportacao-to-emirados-arabes-unidos': 'Emirados Árabes Unidos', 'exportacao-to-estados-unidos': 'Estados Unidos', 'exportacao-to-hong-kong': 'Hong Kong', 'exportacao-to-india': 'Índia', 'exportacao-to-italia': 'Itália', 'exportacao-to-reino-unido': 'Reino Unido', 'exportacao-to-suica': 'Suíça', 'exportacao-from-amapa': 'Amapá', 'exportacao-to-canada': 'Canadá', 'exportacao-to-israel': 'Israel', 'exportacao-to-portugal': 'Portugal', 'exportacao-to-turquia': 'Turquia', 'exportacao-from-bahia': 'Bahia', 'exportacao-from-distrito-federal': 'Distrito Federal', 'exportacao-from-goias': 'Goiás', 'exportacao-to-africa-do-sul': 'África do Sul', 'exportacao-from-maranhao': 'Maranhão', 'exportacao-from-minas-gerais': 'Minas Gerais', 'exportacao-to-espanha': 'Espanha', 'exportacao-from-mato-grosso': 'Mato Grosso', 'exportacao-to-andorra': 'Andorra', 'exportacao-to-suriname': 'Suriname', 'exportacao-from-sem-informacao': 'Sem informação', 'exportacao-from-para': 'Pará', 'exportacao-from-paraiba': 'Paraíba', 'exportacao-from-pernambuco': 'Pernambuco', 'exportacao-from-parana': 'Paraná', 'exportacao-from-rio-de-janeiro': 'Rio de Janeiro', 'exportacao-to-franca': 'França', 'exportacao-to-peru': 'Peru', 'exportacao-to-taiwan-formosa': 'Taiwan (Formosa)', 'exportacao-from-rio-grande-do-norte': 'Rio Grande do Norte', 'exportacao-from-rondonia': 'Rondônia', 'exportacao-from-roraima': 'Roraima', 'exportacao-from-rio-grande-do-sul': 'Rio Grande do Sul', 'exportacao-from-sergipe': 'Sergipe', 'exportacao-from-sao-paulo': 'São Paulo', 'exportacao-to-argentina': 'Argentina', 'exportacao-to-coreia-do-sul': 'Coreia do Sul', 'exportacao-to-mexico': 'México', 'exportacao-to-singapura': 'Singapura', 'exportacao-to-tcheca-republica': 'Tcheca, República', 'exportacao-from-tocantins': 'Tocantins', 'exportacao-from-brasil-ouro-nao-exportado': 'Brasil (ouro não exportado)', 'exportacao-to-brasil-ouro-nao-exportado': 'Brasil (ouro não exportado)', 'AC': 'Acre', 'AL': 'Alagoas', 'AM': 'Amazonas', 'AP': 'Amapá', 'BA': 'Bahia', 'CE': 'Ceará', 'DF': 'Distrito Federal', 'ES': 'Espírito Santo', 'GO': 'Goiás', 'MA': 'Maranhão', 'MG': 'Minas Gerais', 'MS': 'Mato Grosso do Sul', 'MT': 'Mato Grosso', 'PA': 'Pará', 'PB': 'Paraíba', 'PE': 'Pernambuco', 'PI': 'Piauí', 'PR': 'Paraná', 'RJ': 'Rio de Janeiro', 'RN': 'Rio Grande do Norte', 'RO': 'Rondônia', 'RR': 'Roraima', 'RS': 'Rio Grande do Sul', 'SC': 'Santa Catarina', 'SE': 'Sergipe', 'SP': 'São Paulo', 'TO': 'Tocantins', 'ausencia-irregularidade-ton': 'Ausência de irregularidades identificadas', 'extrapola-ton': 'Títulos com indícios de extração além dos limites', 'sem-registros': 'Ouro exportado sem registros na produção oficial', 'sem-titulos-ton': 'Ouro sem a informação dos títulos de origem', 'ti-uc-ton': 'Títulos em TIs ou UCs', 'titulos-fantasmas-ton': '“Títulos fantasmas”', 'ti': 'Dentro das Terras Indígenas', 'uc': 'Dentro de Unidades de Conservação', 'resto': 'Em outras áreas', 'total': 'Área total'};
+            
+
+            const areasData = [
+                {
+                    label: "pa-total",
+                    value: 235983.0268103,
+                    uf: "PA",
+                    estado: "Pará",
+                    tema: "total",
+                },{
+                    label: "mt-total",
+                    value: 102783.733396,
+                    uf: "MT",
+                    estado: "Mato Grosso",
+                    tema: "total",
+                },{
+                    label: "ap-total",
+                    value: 2367.28,
+                    uf: "AP",
+                    estado: "Amapá",
+                    tema: "total",
+                },{
+                    label: "ba-total",
+                    value: 1993.74,
+                    uf: "BA",
+                    estado: "Bahia",
+                    tema: "total",
+                },{
+                    label: "am-total",
+                    value: 884.78,
+                    uf: "AM",
+                    estado: "Amazonas",
+                    tema: "total",
+                },{
+                    label: "ma-total",
+                    value: 484.75,
+                    uf: "MA",
+                    estado: "Maranhão",
+                    tema: "total",
+                },{
+                    label: "mg-total",
+                    value: 235.80,
+                    uf: "MG",
+                    estado: "Minas Gerais",
+                    tema: "total",
+                },{
+                    label: "ro-total",
+                    value: 106.19,
+                    uf: "RO",
+                    estado: "Rondônia",
+                    tema: "total",
+                },{
+                    label: "to-total",
+                    value: 27.28,
+                    uf: "TO",
+                    estado: "Tocantins",
+                    tema: "total",
+                },{
+                    label: "rr-total",
+                    value: 0.00,
+                    uf: "RR",
+                    estado: "Roraima",
+                    tema: "total",
+                }
+            ];
+
+            const ufData = {
+                
+                    AM: [
+                        [ "total", 884.78 ]
+                        
+                    ],
+                    AP: [
+                        [ "total", 2367.28 ]
+                        
+                    ],
+                    BA: [
+                        [ "total", 1993.74 ]
+                        
+                    ],
+                    MA: [
+                        [ "total", 484.75 ]
+                        
+                    ],
+                    MG: [
+                        [ "total", 235.80 ]
+                        
+                    ],
+                    MT: [
+                        [ "ti", 289.203396 ],
+                        [ "resto", 102494.53 ],
+                        [ "total", 102783.733396 ]
+                        
+                    ],
+                    PA: [
+                        [ "ti", 659.5916253 ],
+                        [ "uc", 5496.965185 ],
+                        [ "resto", 229826.47 ],
+                        [ "total", 235983.0268103 ]
+                        
+                    ],
+                    RO: [
+                        [ "total", 106.19 ]
+                        
+                    ],
+                    RR: [
+                        [ "ti", 0 ],
+                        [ "resto", 0.00 ],
+                        [ "total", 0.00 ]
+                        
+                    ],
+                    TO: [
+                        [ "total", 27.28 ]
+                        
+                    ]
+            };
+
+            const dataExportacao = {
+                nodes: [
+                    { id: "exportacao-to-coreia-do-sul" },
+                    { id: "exportacao-from-rio-de-janeiro" },
+                    { id: "exportacao-to-canada" },
+                    { id: "exportacao-to-peru" },
+                    { id: "exportacao-from-maranhao" },
+                    { id: "exportacao-to-africa-do-sul" },
+                    { id: "exportacao-to-mexico" },
+                    { id: "exportacao-from-amazonas" },
+                    { id: "exportacao-to-israel" },
+                    { id: "exportacao-from-sergipe" },
+                    { id: "exportacao-to-belgica" },
+                    { id: "exportacao-to-hong-kong" },
+                    { id: "exportacao-from-rondonia" },
+                    { id: "exportacao-to-singapura" },
+                    { id: "exportacao-to-portugal" },
+                    { id: "exportacao-from-mato-grosso" },
+                    { id: "exportacao-to-reino-unido" },
+                    { id: "exportacao-from-rio-grande-do-norte" },
+                    { id: "exportacao-to-suica" },
+                    { id: "exportacao-to-italia" },
+                    { id: "exportacao-to-india" },
+                    { id: "exportacao-to-alemanha" },
+                    { id: "exportacao-from-paraiba" },
+                    { id: "exportacao-from-distrito-federal" },
+                    { id: "exportacao-from-brasil-ouro-nao-exportado" },
+                    { id: "exportacao-to-tcheca-republica" },
+                    { id: "exportacao-from-pernambuco" },
+                    { id: "exportacao-to-emirados-arabes-unidos" },
+                    { id: "exportacao-to-suriname" },
+                    { id: "exportacao-from-alagoas" },
+                    { id: "exportacao-to-brasil-ouro-nao-exportado" },
+                    { id: "exportacao-from-roraima" },
+                    { id: "exportacao-from-para" },
+                    { id: "exportacao-to-argentina" },
+                    { id: "exportacao-to-taiwan-formosa" },
+                    { id: "exportacao-to-franca" },
+                    { id: "exportacao-from-sao-paulo" },
+                    { id: "exportacao-from-tocantins" },
+                    { id: "exportacao-from-amapa" },
+                    { id: "exportacao-from-goias" },
+                    { id: "exportacao-from-minas-gerais" },
+                    { id: "exportacao-to-turquia" },
+                    { id: "exportacao-from-rio-grande-do-sul" },
+                    { id: "exportacao-from-parana" },
+                    { id: "exportacao-to-andorra" },
+                    { id: "exportacao-to-espanha" },
+                    { id: "exportacao-to-estados-unidos" },
+                    { id: "exportacao-from-bahia" },
+                    { id: "exportacao-from-sem-informacao" }
+                    ],
+                links: [
+                    { source: "exportacao-from-alagoas", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-alemanha", value: 0 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-estados-unidos", value: 0 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-hong-kong", value: 0 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-india", value: 0 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-reino-unido", value: 0 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-suica", value: 0 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-canada", value: 0 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-emirados-arabes-unidos", value: 0.477 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-estados-unidos", value: 0.32 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-hong-kong", value: 0.438 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-india", value: 0.179 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-israel", value: 0 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-italia", value: 0.024 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-portugal", value: 0 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-reino-unido", value: 0.65 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-suica", value: 1.86 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-canada", value: 2.976 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-emirados-arabes-unidos", value: 0.36 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-estados-unidos", value: 0 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-hong-kong", value: 0.104 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-india", value: 0 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-reino-unido", value: 0.093 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-suica", value: 1.578 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-estados-unidos", value: 0.053 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-india", value: 0 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-israel", value: 0 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-suica", value: 0 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-africa-do-sul", value: 0 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-canada", value: 0.011 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-emirados-arabes-unidos", value: 0.88 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-estados-unidos", value: 0.48 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-hong-kong", value: 0.004 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-india", value: 0.295 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-israel", value: 0 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-italia", value: 0.146 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-reino-unido", value: 2.066 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-suica", value: 4.037 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-maranhao", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-maranhao", target: "exportacao-to-canada", value: 0 },
+                    { source: "exportacao-from-maranhao", target: "exportacao-to-estados-unidos", value: 1.563 },
+                    { source: "exportacao-from-maranhao", target: "exportacao-to-suica", value: 0 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-africa-do-sul", value: 0 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-canada", value: 2.979 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-emirados-arabes-unidos", value: 2.405 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-espanha", value: 0 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-estados-unidos", value: 1.855 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-hong-kong", value: 0 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-india", value: 8.713 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-portugal", value: 0 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-reino-unido", value: 13.395 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-suica", value: 8.16 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-andorra", value: 0.004 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-canada", value: 0 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-estados-unidos", value: 0.191 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-india", value: 0 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-portugal", value: 0 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-reino-unido", value: 1.855 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-suica", value: 1.907 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-suriname", value: 0 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-sem-informacao", target: "exportacao-to-suica", value: 0 },
+                    { source: "exportacao-from-para", target: "exportacao-to-belgica", value: 0.344 },
+                    { source: "exportacao-from-para", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-para", target: "exportacao-to-estados-unidos", value: 0.535 },
+                    { source: "exportacao-from-para", target: "exportacao-to-hong-kong", value: 0 },
+                    { source: "exportacao-from-para", target: "exportacao-to-india", value: 0 },
+                    { source: "exportacao-from-para", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-para", target: "exportacao-to-portugal", value: 0 },
+                    { source: "exportacao-from-para", target: "exportacao-to-reino-unido", value: 0.109 },
+                    { source: "exportacao-from-para", target: "exportacao-to-suica", value: 0 },
+                    { source: "exportacao-from-para", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-paraiba", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-pernambuco", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-canada", value: 0.005 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-emirados-arabes-unidos", value: 0.056 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-estados-unidos", value: 0.03 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-hong-kong", value: 0.019 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-india", value: 0.034 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-reino-unido", value: 0.028 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-suica", value: 0.095 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-alemanha", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-canada", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-estados-unidos", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-franca", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-india", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-israel", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-peru", value: 0.001 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-reino-unido", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-suica", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-taiwan-formosa", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-rio-grande-do-norte", target: "exportacao-to-belgica", value: 0.03 },
+                    { source: "exportacao-from-rio-grande-do-norte", target: "exportacao-to-emirados-arabes-unidos", value: 0.006 },
+                    { source: "exportacao-from-rio-grande-do-norte", target: "exportacao-to-estados-unidos", value: 0 },
+                    { source: "exportacao-from-rondonia", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-rondonia", target: "exportacao-to-estados-unidos", value: 0 },
+                    { source: "exportacao-from-rondonia", target: "exportacao-to-india", value: 0 },
+                    { source: "exportacao-from-rondonia", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-roraima", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-roraima", target: "exportacao-to-india", value: 0 },
+                    { source: "exportacao-from-rio-grande-do-sul", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-rio-grande-do-sul", target: "exportacao-to-estados-unidos", value: 0 },
+                    { source: "exportacao-from-sergipe", target: "exportacao-to-belgica", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-alemanha", value: 0.03 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-argentina", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-belgica", value: 0.704 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-canada", value: 0.905 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-coreia-do-sul", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-emirados-arabes-unidos", value: 1.353 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-estados-unidos", value: 0.864 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-franca", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-hong-kong", value: 0.167 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-india", value: 0.717 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-israel", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-mexico", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-peru", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-portugal", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-reino-unido", value: 0.882 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-singapura", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-suica", value: 2.43 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-tcheca-republica", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-tocantins", target: "exportacao-to-canada", value: 0 },
+                    { source: "exportacao-from-tocantins", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-brasil-ouro-nao-exportado", target: "exportacao-to-brasil-ouro-nao-exportado", value: 9.811 }
+                    ]
+            }
+
+            const dataTemas = {
+                nodes: [
+                    { id: "temas-to-santa-catarina" },
+                    { id: "temas-to-amapa" },
+                    { id: "temas-to-mato-grosso" },
+                    { id: "temas-from-ausencia-irregularidade-ton" },
+                    { id: "temas-from-titulos-fantasmas-ton" },
+                    { id: "temas-to-amazonas" },
+                    { id: "temas-from-sem-registros" },
+                    { id: "temas-to-parana" },
+                    { id: "temas-to-para" },
+                    { id: "temas-from-ti-uc-ton" },
+                    { id: "temas-to-tocantins" },
+                    { id: "temas-from-extrapola-ton" },
+                    { id: "temas-to-sem-informacao-origem" },
+                    { id: "temas-to-roraima" },
+                    { id: "temas-to-goias" },
+                    { id: "temas-from-sem-titulos-ton" },
+                    { id: "temas-to-bahia" },
+                    { id: "temas-to-pernambuco" },
+                    { id: "temas-to-maranhao" },
+                    { id: "temas-to-rondonia" },
+                    { id: "temas-to-rio-grande-do-norte" },
+                    { id: "temas-to-minas-gerais" },
+                    { id: "temas-to-sem-informacao" }
+                    ],
+                links: [
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-amazonas", value: 0 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-amazonas", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-amazonas", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-amazonas", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-amazonas", value: 0.117876951 },
+                    { source: "temas-from-sem-registros", target: "temas-to-amazonas", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-amapa", value: 5.26114752 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-amapa", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-amapa", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-amapa", value: 0.052807726 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-amapa", value: 0.619711893 },
+                    { source: "temas-from-sem-registros", target: "temas-to-amapa", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-bahia", value: 5.000462224 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-bahia", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-bahia", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-bahia", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-bahia", value: 0 },
+                    { source: "temas-from-sem-registros", target: "temas-to-bahia", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-goias", value: 0 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-goias", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-goias", value: 7.356970268 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-goias", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-goias", value: 0 },
+                    { source: "temas-from-sem-registros", target: "temas-to-goias", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-maranhao", value: 1.94464326 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-maranhao", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-maranhao", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-maranhao", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-maranhao", value: 0 },
+                    { source: "temas-from-sem-registros", target: "temas-to-maranhao", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-minas-gerais", value: 32.43337555 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-minas-gerais", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-minas-gerais", value: 4.699560991 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-minas-gerais", value: 0.069276367 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-minas-gerais", value: 0 },
+                    { source: "temas-from-sem-registros", target: "temas-to-minas-gerais", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-mato-grosso", value: 0.239008563 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-mato-grosso", value: 2.201128317 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-mato-grosso", value: 1.645579462 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-mato-grosso", value: 0.052529062 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-mato-grosso", value: 7.340514205 },
+                    { source: "temas-from-sem-registros", target: "temas-to-mato-grosso", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-para", value: 1.592946013 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-para", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-para", value: 0.458911688 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-para", value: 0.364445115 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-para", value: 6.25998254 },
+                    { source: "temas-from-sem-registros", target: "temas-to-para", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-pernambuco", value: 0 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-pernambuco", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-pernambuco", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-pernambuco", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-pernambuco", value: 0 },
+                    { source: "temas-from-sem-registros", target: "temas-to-pernambuco", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-parana", value: 0.306522104 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-parana", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-parana", value: 0.0001083 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-parana", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-parana", value: 0 },
+                    { source: "temas-from-sem-registros", target: "temas-to-parana", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-rio-grande-do-norte", value: 0.061890364 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-rio-grande-do-norte", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-rio-grande-do-norte", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-rio-grande-do-norte", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-rio-grande-do-norte", value: 0 },
+                    { source: "temas-from-sem-registros", target: "temas-to-rio-grande-do-norte", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-rondonia", value: 0 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-rondonia", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-rondonia", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-rondonia", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-rondonia", value: 1.107187544 },
+                    { source: "temas-from-sem-registros", target: "temas-to-rondonia", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-roraima", value: 0 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-roraima", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-roraima", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-roraima", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-roraima", value: 0 },
+                    { source: "temas-from-sem-registros", target: "temas-to-roraima", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-santa-catarina", value: 0.025892601 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-santa-catarina", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-santa-catarina", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-santa-catarina", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-santa-catarina", value: 0 },
+                    { source: "temas-from-sem-registros", target: "temas-to-santa-catarina", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-tocantins", value: 0 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-tocantins", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-tocantins", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-tocantins", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-tocantins", value: 0.00041442 },
+                    { source: "temas-from-sem-registros", target: "temas-to-tocantins", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-sem-informacao", value: 0 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-sem-informacao", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-sem-informacao", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-sem-informacao", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-sem-informacao", value: 0 },
+                    { source: "temas-from-sem-registros", target: "temas-to-sem-informacao", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-sem-informacao-origem", value: 0 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-sem-informacao-origem", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-sem-informacao-origem", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-sem-informacao-origem", value: 0 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-sem-informacao-origem", value: 0 },
+                    { source: "temas-from-sem-registros", target: "temas-to-sem-informacao-origem", value: 0 }
+                    ]
+            }
+
+            const svg = d3.select("#canvas")
+                          .attr("width", width)
+                          .attr("height", height)
+                          .style("background-color", svgBackground)
+                        //   .style("border", svgBorder)
+                          .append("g")
+                          .attr("transform", `translate(${margin},${margin})`);
+
+
+            function getLinkId(d) {
+                return `link_${d.source.id}_${d.target.id}`;
+            }
+
+            function reduceUnique(previous, current) {
+                if (previous.indexOf(current) < 0) {
+                    previous.push(current);
+                }
+                return previous;
+            }
+
+            function sumValues(previous, current) {
+                previous += current;
+                return previous;
+            }
+
+            function highlight_node_links(i, node, linkColor, nodeColor){
+                // https://stackoverflow.com/questions/19195888/d3-sankey-highlight-all-connected-paths-from-start-to-end
+
+                var remainingNodes=[],
+                    nextNodes=[];
+
+                // var stroke_color = linkColorDefault;
+                // if( d3.select(this).attr("data-clicked") == "1" ){
+                //     d3.select(this).attr("data-clicked","0");
+                //     stroke_color = linkColorDefault;
+                // }else{
+                //     d3.select(this).attr("data-clicked","1");
+                //     stroke_color = linkColorHoverLink;
+                // }
+
+                var traverse = [{
+                                linkType : "sourceLinks",
+                                nodeType : "target"
+                                },{
+                                linkType : "targetLinks",
+                                nodeType : "source"
+                                }];
+
+                traverse.forEach(function(step){
+                    highlight_node(node.id, nodeColor);
+                    node[step.linkType].forEach(function(link) {
+                        remainingNodes.push(link[step.nodeType]);
+                        highlight_node(link.target.id, nodeColor);
+                        highlight_node(link.source.id, nodeColor);
+                        // highlight_link(getLinkId(link), linkColor);
+                    });
+
+                    while (remainingNodes.length) {
+                        nextNodes = [];
+                        remainingNodes.forEach(function(node) {
+                            // highlight_node(node.id, nodeColor);
+                            node[step.linkType].forEach(function(link) {
+                                nextNodes.push(link[step.nodeType]);
+                                // highlight_link(getLinkId(link), linkColor);
+                            });
+                        });
+                        remainingNodes = nextNodes;
+                    }
+                });
+            }
+
+            function highlight_link(id, color){
+                // console.log("id ", id);
+                d3.select("#"+id).style("stroke", color);
+            }
+            function highlight_node(id, color){
+                // console.log("id ", id);
+                d3.select("#"+id).attr("fill", color);
+            }
+
+
+            function plotSankey(width, shift, data) {
+
+                // Define our sankey instance.
+                const graphSize = [width, height - margin];
+                const sankey = d3.sankey()
+                                .nodeSort((a, b) => {
+                                    return a.value > b.value ? -1 : a.value < b.value ? 1 : 0;
+                                })
+                                .extent([[shift, titlesHeight], graphSize])
+                                .nodeId(d => d.id)
+                                .nodeWidth(nodeWidth)
+                                .nodePadding(nodePadding)
+                                .nodeAlign(nodeAlignment);
+
+                let graph = sankey(data);
+
+                // Loop through the nodes. Set additional properties to make a few things
+                // easier to deal with later.
+                graph.nodes.forEach(node => {
+                    node.fillColor = nodeColorDefault;
+                    node.strokeColor = nodeStrokeColor;
+                    node.StrokeWidth = nodeStrokeWidth;
+                    node.width = node.x1 - node.x0;
+                    node.height = Math.max(node.y1 - node.y0, 5);
+                });
+
+                // Build the links.
+                let svgLinks = svg.append("g")
+                    .classed("links", true)
+                    .selectAll("g")
+                    .data(graph.links)
+                    .enter()
+                    .append("g");
+
+                svgLinks.append("path")
+                .classed("link", true)
+                .attr("d", path)
+                .attr("fill", "none")
+                .attr("stroke", linkColorDefault)
+                .attr("id", d => getLinkId(d))
+                .attr("stroke-width", d => Math.max(1.0, d.width))
+                .attr("stroke-opacity", linkOpacity);
+
+                let svgNodesContainers = svg.append("g")
+                    .classed("nodes", true)
+                    .selectAll("rect")
+                    .data(graph.nodes)
+                    .enter();
+
+                let svgNodes = svgNodesContainers.append("rect")
+                    .classed("node", true)
+                    .attr("id", d => `${d.id}`)
+                    .attr("x", d => d.x0)
+                    .attr("y", d => d.y0)
+                    .attr("width", d => d.width)
+                    .attr("height", d => d.height)
+                    .attr("fill", d => d.fillColor)
+                    .attr("opacity", nodeOpacity)
+                    .attr("stroke", d => d.strokeColor)
+                    .attr("stroke-width", d => d.StrokeWidth);
+
+                let nodeDepths = graph.nodes
+                .map(n => n.depth)
+                .reduce(reduceUnique, []);
+
+                nodeDepths.forEach(d => {
+                let nodesAtThisDepth = graph.nodes.filter(n => n.depth === d);
+                let numberOfNodes = nodesAtThisDepth.length;
+                let totalHeight = nodesAtThisDepth
+                        .map(n => n.height)
+                        .reduce(sumValues, 0);
+                let whitespace = graphSize[1] - totalHeight;
+                let balancedWhitespace = whitespace / (numberOfNodes + 1.0);
+                // console.log("depth", d, "total height", totalHeight, "whitespace", whitespace, "balanced whitespace", balancedWhitespace);
+                });
+
+                svgNodesContainers
+                .append("text")
+                .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
+                .attr("pointer-events", "none")
+                .attr("font-size", labelFontSize)
+                .attr("x", d => d.x0 + d.width/2)
+                .attr("y", d => d.y0 + d.height/2 + labelFontSize/3)
+                .attr("display", d => d.height < labelFontSize*2 ? "none" : "block")
+                .attr("text-anchor", "middle")
+                .text(d => `${titles[d.id]}`)
+                .call(wrap, 105);
+
+                function wrap(text, width) {
+                    text.each(function() {
+                        var text = d3.select(this),
+                            words = text.text().split(/\s+/).reverse(),
+                            word,
+                            line = [],
+                            lineNumber = 0,
+                            lineHeight = 20,
+                            y = parseFloat(text.attr("y")),
+                            x = parseFloat(text.attr("x")),
+                            tspan = text.text(null);
+                        while (word = words.pop()) {
+                            line.push(word);
+                            tspan.text(" " + line.join(" "));
+                            if (tspan.node().getComputedTextLength() > width) {
+                                line.pop();
+                                tspan.text(line.join(" "));
+                                line = [word];
+                                tspan = text.append("tspan").attr("x", x).attr("y", ++lineNumber * lineHeight + y).text(word);
+                                text.attr('data-lines', lineNumber+1).classed('multilined', true);
+                            }
+                        }
+                    });
+                }
+
+                let multilinedElements = document.querySelectorAll(".multilined");
+                Array.prototype.forEach.call(multilinedElements, function (el) {
+                    let lineHeight = 20;
+                    let numLines = parseFloat(el.getAttribute("data-lines"));
+                    let y = parseFloat(el.getAttribute("y"));
+                    let height = lineHeight*numLines;
+                    // console.log(y, numLines, lineHeight, height);
+                    el.setAttribute("y", y - lineHeight/2);
+                    Array.prototype.forEach.call(el.querySelectorAll('tspan'), function (child) {
+                        let y = parseFloat(child.getAttribute("y"));
+                        child.setAttribute("y", y - lineHeight/2);
+                    });
+                });
+
+                svgNodes.on("mouseover", (d, x) => {
+                    // let node = d3.select(d.target).attr("fill", nodeColorHoverNode);
+                    let allLinks = x.targetLinks.concat(x.sourceLinks);
+                    allLinks.map(i => "#" + getLinkId(i)).forEach(i => {
+                        let item = d3.select(i).attr("stroke", linkColorHoverNode);
+                    });
+                    highlight_node_links(d, x, linkColorHoverNode, nodeColorHoverNode);
+                    // tooltip
+                    d3.select('#tooltip')
+                        .html(d => {
+                            return (
+                                "<div class='title'><h4>" + titles[x.id] + "</h4></div>" +
+                                "<div class='label'>QUANTIDADE</div>" +
+                                "<div class='value'>" + x.value.toLocaleString("pt-BR", options={maximumFractionDigits: 2}) + " toneladas</div>"
+                            );
+                        })
+                        .transition()
+                        .duration(200)
+                        .style('opacity', 1);
+                });
+                svgNodes.on("mousemove", (d, x) => {
+                    // tooltip
+                    d3.select("#tooltip").style("left", (d.pageX+10) + "px").style("top", (d.pageY+10) + "px");
+                });
+                svgNodes.on("mouseout", (d, x) => {
+                    // let node = d3.select(d.target).attr("fill", nodeColorDefault);
+                    let allLinks = x.targetLinks.concat(x.sourceLinks);
+                    allLinks.map(i => "#" + getLinkId(i)).forEach(i => {
+                        let item = d3.select(i).attr("stroke", linkColorDefault);
+                    });
+                    highlight_node_links(d, x, linkColorDefault, nodeColorDefault);
+                    // tooltip
+                    d3.select("#tooltip").style("opacity", 0)
+                });
+
+
+                svgLinks.on("mouseover", (d, x) => {
+                    let link = d3.select(d.target);
+                    link.attr("stroke", linkColorHoverLink);
+                    let sourceNode = d3.select(`#${x.source.id}`).attr("fill", nodeColorHoverLink);
+                    let targetNode = d3.select(`#${x.target.id}`).attr("fill", nodeColorHoverLink);
+                    // tooltip
+                    d3.select('#tooltip')
+                        .html(d => {
+                            return (
+                                "<div class='title'><h4>" + titles[x.source.id] + arrow + titles[x.target.id] + "</h4></div>" +
+                                "<div class='label'>QUANTIDADE</div>" +
+                                "<div class='value'>" + x.value.toLocaleString("pt-BR", options={maximumFractionDigits: 2}) + " toneladas</div>"
+                            );
+                        })
+                        .transition()
+                        .duration(200)
+                        .style('opacity', 1);
+                });
+                svgLinks.on("mousemove", (d, x) => {
+                    // tooltip
+                    d3.select("#tooltip").style("left", (d.pageX+10) + "px").style("top", (d.pageY+10) + "px");
+                });
+                svgLinks.on("mouseout", (d, x) => {
+                    let link = d3.select(d.target).attr("stroke", linkColorDefault);
+                    let sourceNode = d3.select(`#${x.source.id}`).attr("fill", nodeColorDefault);
+                    let targetNode = d3.select(`#${x.target.id}`).attr("fill", nodeColorDefault);
+                    // tooltip
+                    d3.select("#tooltip").style("opacity", 0)
+                });
+
+            }
+
+            function groupData(data, total) {
+                // use scale to get percent values
+                const percent = d3.scaleLinear()
+                    .domain([0, total])
+                    .range([0, 100])
+                // filter out data that has zero values
+                // also get mapping for next placement
+                // (save having to format data for d3 stack)
+                let cumulative = 0
+                const _data = data.map(d => {
+                    cumulative += d.value
+                    return {
+                    value: d.value,
+                    // want the cumulative to prior value (start of rect)
+                    cumulative: cumulative - d.value,
+                    label: d.label,
+                    uf: d.uf,
+                    estado: d.estado,
+                    tema: d.tema,
+                    percent: percent(d.value)
+                    }
+                }).filter(d => d.value > 0)
+                return _data
+            }
+
+            function stackedBar(data, config) {
+                      const total = d3.sum(data, d => d.value)
+                const _data = groupData(data, total)
+
+                // set up scales for horizontal placement
+                const yScale = d3.scaleLinear()
+                    .domain([0, total])
+                    .range([0, height-margin-titlesHeight])
+
+                // create svg in passed in div
+
+                // stack rect for each data value
+                let areaNodeContainers = svg.append("g")
+                    .classed("nodes", true)
+                    .selectAll('rect')
+                    .data(_data)
+                    .enter()
+
+                let areaNodes = areaNodeContainers.append('rect')
+                    .classed("node", true)
+                    .attr('y', d => yScale(d.cumulative) + titlesHeight)
+                    .attr('x', 0 )
+                    .attr('width', nodeWidth)
+                    .attr('height', d => yScale(d.value))
+                    .attr('fill', areaNodeColorHoverNode)
+                    .attr("stroke", nodeStrokeColor)
+                    .attr("stroke-width", nodeStrokeWidth);
+
+                areaNodeContainers
+                    .append("text")
+                    .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
+                    .attr("pointer-events", "none")
+                    .attr("font-size", labelFontSize)
+                    .attr("x", d => nodeWidth/2)
+                    .attr("y", d => yScale(d.cumulative) + titlesHeight + yScale(d.value)/2 + labelFontSize/3)
+                    .attr("display", d => yScale(d.value) < labelFontSize*2.5 ? "none" : "block")
+                    .attr("text-anchor", "middle")
+                    .text(d => d.estado);
+
+                areaNodes.on("mouseover", (d, x) => {
+                    d3.select(d.target).attr("fill", areaNodeColorDefault);
+                             // tooltip
+                    d3.select('#tooltip')
+                        .html(d => {
+                            let htmlString = "";
+                            htmlString += "<div class='title'><h4>" + x.estado + "</h4></div>";
+                            for (const entry of ufData[x.uf]) {
+                                htmlString += "<div>";
+                                htmlString += "<div class='label'>" + titles[entry[0]] +"</div>";
+                                htmlString += "<div class='value'>" + entry[1].toLocaleString("pt-BR", options={maximumFractionDigits: 0}) + " hectares</div>";
+                                htmlString += "</div>";
+                            }
+                            return htmlString;
+                        })
+                        .transition()
+                        .duration(200)
+                        .style('opacity', 1);
+                });
+                areaNodes.on("mousemove", (d, x) => {
+                    // tooltip
+                    d3.select("#tooltip").style("left", (d.pageX+10) + "px").style("top", (d.pageY+10) + "px");
+                });
+                areaNodes.on("mouseout", (d, x) => {
+                    let node = d3.select(d.target).attr("fill", areaNodeColorHoverNode);
+                       // tooltip
+                    d3.select("#tooltip").style("opacity", 0)
+                });
+            }
+            // render chart
+            stackedBar(areasData);
+
+            let innerMargin = 4*margin;
+            let firstStart = innerMargin + nodeWidth;
+            let linksSpace = (width - firstStart - innerMargin - 2*nodeWidth)/2;
+            let firstEnd = 2*nodeWidth + linksSpace + innerMargin - margin;
+
+
+            plotSankey(firstEnd, firstStart, dataTemas);
+            plotSankey(width-2*margin, firstEnd + innerMargin, dataExportacao);
+
+
+            let nodeCenter = nodeWidth / 2;
+
+            // Indícios de mineração de ouro nos estados (ha)
+            svg.append("text")
+            .attr("x", (nodeCenter))
+            .attr("y", 20)
+            .attr("text-anchor", "middle")
+            .style("font-size", "14px")
+            .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
+            .attr("font-weight", "400")
+            .text("Indícios de mineração") // line 1
+            .append("tspan")
+            .attr("x", (nodeCenter))
+            .attr("y", 20 + 20)
+            .text("de ouro nos estados")  // line 2
+            .append("tspan")
+            .attr("x", (nodeCenter))
+            .attr("y", 20 + 40)
+            .text("(ha)");  // line 3
+
+            // Indícios de ilegalidade na produção de ouro (t)
+            nodeCenter += nodeWidth + innerMargin;
+            svg.append("text")
+            .attr("x", (nodeCenter))
+            .attr("y", 20)
+            .attr("text-anchor", "middle")
+            .style("font-size", "14px")
+            .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
+            .attr("font-weight", "400")
+            .text("Indícios de ilegalidade") // line 1
+            .append("tspan")
+            .attr("x", (nodeCenter))
+            .attr("y", 20 + 20)
+            .text("na produção de ouro")  // line 2
+            .append("tspan")
+            .attr("x", (nodeCenter))
+            .attr("y", 20 + 40)
+            .text("(t)");  // line 3
+
+            // Produção de ouro por estado (t)
+            nodeCenter += linksSpace - margin;
+            svg.append("text")
+            .attr("x", (nodeCenter))
+            .attr("y", 20)
+            .attr("text-anchor", "middle")
+            .style("font-size", "14px")
+            .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
+            .attr("font-weight", "400")
+            .text("Produção de") // line 1
+            .append("tspan")
+            .attr("x", (nodeCenter))
+            .attr("y", 20 + 20)
+            .text("ouro por estado")  // line 2
+            .append("tspan")
+            .attr("x", (nodeCenter))
+            .attr("y", 20 + 40)
+            .text("(t)");  // line 3
+
+            // Exportações de ouro por estado (t)
+            nodeCenter += nodeWidth + innerMargin;
+            svg.append("text")
+            .attr("x", (nodeCenter))
+            .attr("y", 20)
+            .attr("text-anchor", "middle")
+            .style("font-size", "14px")
+            .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
+            .attr("font-weight", "400")
+            .text("Exportações de") // line 1
+            .append("tspan")
+            .attr("x", (nodeCenter))
+            .attr("y", 20 + 20)
+            .text("ouro por estado")  // line 2
+            .append("tspan")
+            .attr("x", (nodeCenter))
+            .attr("y", 20 + 40)
+            .text("(t)");  // line 3
+
+            // Destino das exportações de ouro (t)
+            nodeCenter += linksSpace ;
+            svg.append("text")
+            .attr("x", (nodeCenter))
+            .attr("y", 20)
+            .attr("text-anchor", "middle")
+            .style("font-size", "14px")
+            .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
+            .attr("font-weight", "400")
+            .text("Destino das") // line 1
+            .append("tspan")
+            .attr("x", (nodeCenter))
+            .attr("y", 20 + 20)
+            .text("exportações de ouro")  // line 2
+            .append("tspan")
+            .attr("x", (nodeCenter))
+            .attr("y", 20 + 40)
+            .text("(t)");  // line 3
+
+            d3.select(".sankey-page").on("mousemove", () => {
+                d3.select("#tooltip").style("opacity", 0);
+            });
+
+    </script>
+
+
+</body>
+</html>
