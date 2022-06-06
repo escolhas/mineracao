@@ -12,12 +12,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Gravitas+One:wght@400&family=IBM+Plex+Sans:wght@100;400;500;600;700&display=swap" rel="stylesheet">
 
   
-    <script src="/static/d3.v7.min.48e5217ed02f.js?tag=c5365f2070bec9" charset="utf-8"></script>
-    <script src="/static/d3-sankey.min.737a0964b7aa.js?tag=c5365f2070bec9" charset="utf-8"></script>
+    <script src="/static/d3.v7.min.js?tag=f68c2320f702fd" charset="utf-8"></script>
+    <script src="/static/d3-sankey.min.js?tag=f68c2320f702fd" charset="utf-8"></script>
 
 
-  <link rel="stylesheet" href="/static/normalize.0d05960530c2.css?tag=c5365f2070bec9" />
-  <link rel="stylesheet" href="/static/website/index.bc06e92272ea.css?tag=c5365f2070bec9" />
+  <link rel="stylesheet" href="/static/normalize.css?tag=f68c2320f702fd" />
+  <link rel="stylesheet" href="/static/website/index.css?tag=f68c2320f702fd" />
 
   
 <style>
@@ -145,7 +145,7 @@
 <div id="top-menu">
   <div class="top-menu-container container-wide">
     <div class="logo">
-      <img src="/static/website/logo-escolhas.380c67b84411.svg?tag=c5365f2070bec9" />
+      <img src="/static/website/logo-escolhas.svg?tag=f68c2320f702fd" />
     </div>
     <nav class="main-nav">
       <ul>
@@ -185,12 +185,14 @@
 </div>
 <div class="container footnote">
     <p class="label">
+        
         * Note que não é possível relacionar todo o volume de ouro produzido pelos
         estados com as exportações estaduais. Isso porque alguns estados exportam,
         mas não produzem ouro. Logo, não há como garantir de onde veio o ouro
         exportado por eles. São Paulo, por exemplo, foi o segundo maior exportador
         em 2020, mas não produziu um grama sequer.<br>
         ** A primeira coluna mostra áreas com indícios de extração de ouro por estado, indicando a presença da atividade em Terras Indígenas e Unidades de Conservação - onde ela não é permitida, mas acontece mesmo sem autorizações ou eventuais registros. Os dados são do MapBiomas.
+        
     </p>
 </div>
 <div id="tooltip"></div>
@@ -346,55 +348,55 @@
 
             const dataExportacao = {
                 nodes: [
-                    { id: "exportacao-to-coreia-do-sul" },
-                    { id: "exportacao-from-rio-de-janeiro" },
-                    { id: "exportacao-to-canada" },
-                    { id: "exportacao-to-peru" },
-                    { id: "exportacao-from-maranhao" },
-                    { id: "exportacao-to-africa-do-sul" },
-                    { id: "exportacao-to-mexico" },
-                    { id: "exportacao-from-amazonas" },
-                    { id: "exportacao-to-israel" },
-                    { id: "exportacao-from-sergipe" },
-                    { id: "exportacao-to-belgica" },
-                    { id: "exportacao-to-hong-kong" },
-                    { id: "exportacao-from-rondonia" },
-                    { id: "exportacao-to-singapura" },
-                    { id: "exportacao-to-portugal" },
-                    { id: "exportacao-from-mato-grosso" },
-                    { id: "exportacao-to-reino-unido" },
-                    { id: "exportacao-from-rio-grande-do-norte" },
-                    { id: "exportacao-to-suica" },
-                    { id: "exportacao-to-italia" },
-                    { id: "exportacao-to-india" },
-                    { id: "exportacao-to-alemanha" },
-                    { id: "exportacao-from-paraiba" },
-                    { id: "exportacao-from-distrito-federal" },
-                    { id: "exportacao-from-brasil-ouro-nao-exportado" },
-                    { id: "exportacao-to-tcheca-republica" },
-                    { id: "exportacao-from-pernambuco" },
                     { id: "exportacao-to-emirados-arabes-unidos" },
-                    { id: "exportacao-to-suriname" },
-                    { id: "exportacao-from-alagoas" },
-                    { id: "exportacao-to-brasil-ouro-nao-exportado" },
-                    { id: "exportacao-from-roraima" },
-                    { id: "exportacao-from-para" },
-                    { id: "exportacao-to-argentina" },
-                    { id: "exportacao-to-taiwan-formosa" },
-                    { id: "exportacao-to-franca" },
+                    { id: "exportacao-to-peru" },
                     { id: "exportacao-from-sao-paulo" },
-                    { id: "exportacao-from-tocantins" },
-                    { id: "exportacao-from-amapa" },
-                    { id: "exportacao-from-goias" },
+                    { id: "exportacao-to-franca" },
+                    { id: "exportacao-to-suica" },
+                    { id: "exportacao-to-portugal" },
+                    { id: "exportacao-to-brasil-ouro-nao-exportado" },
                     { id: "exportacao-from-minas-gerais" },
-                    { id: "exportacao-to-turquia" },
+                    { id: "exportacao-to-singapura" },
+                    { id: "exportacao-to-alemanha" },
+                    { id: "exportacao-from-rio-de-janeiro" },
+                    { id: "exportacao-to-hong-kong" },
                     { id: "exportacao-from-rio-grande-do-sul" },
-                    { id: "exportacao-from-parana" },
+                    { id: "exportacao-to-coreia-do-sul" },
+                    { id: "exportacao-to-argentina" },
+                    { id: "exportacao-to-tcheca-republica" },
                     { id: "exportacao-to-andorra" },
-                    { id: "exportacao-to-espanha" },
+                    { id: "exportacao-from-pernambuco" },
+                    { id: "exportacao-from-distrito-federal" },
+                    { id: "exportacao-from-amapa" },
                     { id: "exportacao-to-estados-unidos" },
+                    { id: "exportacao-from-mato-grosso" },
+                    { id: "exportacao-to-turquia" },
+                    { id: "exportacao-from-brasil-ouro-nao-exportado" },
+                    { id: "exportacao-to-canada" },
+                    { id: "exportacao-to-taiwan-formosa" },
                     { id: "exportacao-from-bahia" },
-                    { id: "exportacao-from-sem-informacao" }
+                    { id: "exportacao-to-suriname" },
+                    { id: "exportacao-to-africa-do-sul" },
+                    { id: "exportacao-from-rio-grande-do-norte" },
+                    { id: "exportacao-from-paraiba" },
+                    { id: "exportacao-from-para" },
+                    { id: "exportacao-to-espanha" },
+                    { id: "exportacao-to-italia" },
+                    { id: "exportacao-from-amazonas" },
+                    { id: "exportacao-from-goias" },
+                    { id: "exportacao-from-rondonia" },
+                    { id: "exportacao-from-maranhao" },
+                    { id: "exportacao-from-sem-informacao" },
+                    { id: "exportacao-from-parana" },
+                    { id: "exportacao-to-belgica" },
+                    { id: "exportacao-from-alagoas" },
+                    { id: "exportacao-to-israel" },
+                    { id: "exportacao-from-roraima" },
+                    { id: "exportacao-to-india" },
+                    { id: "exportacao-from-sergipe" },
+                    { id: "exportacao-to-mexico" },
+                    { id: "exportacao-to-reino-unido" },
+                    { id: "exportacao-from-tocantins" }
                     ],
                 links: [
                     { source: "exportacao-from-alagoas", target: "exportacao-to-belgica", value: 0 },
@@ -551,29 +553,29 @@
 
             const dataTemas = {
                 nodes: [
+                    { id: "temas-from-ausencia-irregularidade-ton" },
+                    { id: "temas-to-pernambuco" },
+                    { id: "temas-to-rio-grande-do-norte" },
                     { id: "temas-to-santa-catarina" },
+                    { id: "temas-to-amazonas" },
+                    { id: "temas-from-ti-uc-ton" },
+                    { id: "temas-to-para" },
+                    { id: "temas-from-sem-titulos-ton" },
+                    { id: "temas-to-roraima" },
+                    { id: "temas-from-extrapola-ton" },
+                    { id: "temas-to-tocantins" },
+                    { id: "temas-to-sem-informacao" },
+                    { id: "temas-to-parana" },
+                    { id: "temas-from-titulos-fantasmas-ton" },
+                    { id: "temas-to-sem-informacao-origem" },
+                    { id: "temas-from-sem-registros" },
                     { id: "temas-to-amapa" },
                     { id: "temas-to-mato-grosso" },
-                    { id: "temas-from-ausencia-irregularidade-ton" },
-                    { id: "temas-from-titulos-fantasmas-ton" },
-                    { id: "temas-to-amazonas" },
-                    { id: "temas-from-sem-registros" },
-                    { id: "temas-to-parana" },
-                    { id: "temas-to-para" },
-                    { id: "temas-from-ti-uc-ton" },
-                    { id: "temas-to-tocantins" },
-                    { id: "temas-from-extrapola-ton" },
-                    { id: "temas-to-sem-informacao-origem" },
-                    { id: "temas-to-roraima" },
-                    { id: "temas-to-goias" },
-                    { id: "temas-from-sem-titulos-ton" },
-                    { id: "temas-to-bahia" },
-                    { id: "temas-to-pernambuco" },
-                    { id: "temas-to-maranhao" },
-                    { id: "temas-to-rondonia" },
-                    { id: "temas-to-rio-grande-do-norte" },
                     { id: "temas-to-minas-gerais" },
-                    { id: "temas-to-sem-informacao" }
+                    { id: "temas-to-goias" },
+                    { id: "temas-to-rondonia" },
+                    { id: "temas-to-maranhao" },
+                    { id: "temas-to-bahia" }
                     ],
                 links: [
                     { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-amazonas", value: 0 },
@@ -1066,6 +1068,7 @@
             let nodeCenter = nodeWidth / 2;
 
             // Indícios de mineração de ouro nos estados (ha)
+            // Evidence of gold mining in Brazilian states (ha)*
             svg.append("text")
             .attr("x", (nodeCenter))
             .attr("y", 20)
@@ -1077,13 +1080,14 @@
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("de ouro nos estados")  // line 2
+            .text("de ouro nos estados *")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
-            .text("(ha)");  // line 3
+            .text(" (ha)");  // line 3
 
-            // Indícios de ilegalidade na produção de ouro (t)
+            // Indícios de ilegalidade na produção de ouro
+            // Evidence of illegality in the Brazilian gold supply chain
             nodeCenter += nodeWidth + innerMargin;
             svg.append("text")
             .attr("x", (nodeCenter))
@@ -1100,9 +1104,10 @@
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
-            .text("(t)");  // line 3
+            .text("");  // line 3
 
             // Produção de ouro por estado (t)
+            // Gold production by state (t) **
             nodeCenter += linksSpace - margin;
             svg.append("text")
             .attr("x", (nodeCenter))
@@ -1115,13 +1120,14 @@
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("ouro por estado")  // line 2
+            .text("ouro por estado **")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
             .text("(t)");  // line 3
 
             // Exportações de ouro por estado (t)
+            // Gold exports by state (t)
             nodeCenter += nodeWidth + innerMargin;
             svg.append("text")
             .attr("x", (nodeCenter))
@@ -1141,6 +1147,7 @@
             .text("(t)");  // line 3
 
             // Destino das exportações de ouro (t)
+            // Destination of Brazilian gold exports (t)
             nodeCenter += linksSpace ;
             svg.append("text")
             .attr("x", (nodeCenter))
@@ -1159,9 +1166,10 @@
             .attr("y", 20 + 40)
             .text("(t)");  // line 3
 
-            d3.select(".sankey-page").on("mousemove", () => {
-                d3.select("#tooltip").style("opacity", 0);
-            });
+            // Not reached in production; thus, commenting for now.
+            // d3.select(".sankey-page").on("mousemove", () => {
+            //     d3.select("#tooltip").style("opacity", 0);
+            // });
 
     </script>
 

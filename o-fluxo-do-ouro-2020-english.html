@@ -186,12 +186,12 @@
 <div class="container footnote">
     <p class="label">
         
-        * Note que não é possível relacionar todo o volume de ouro produzido pelos
-        estados com as exportações estaduais. Isso porque alguns estados exportam,
-        mas não produzem ouro. Logo, não há como garantir de onde veio o ouro
-        exportado por eles. São Paulo, por exemplo, foi o segundo maior exportador
-        em 2020, mas não produziu um grama sequer.<br>
-        ** A primeira coluna mostra áreas com indícios de extração de ouro por estado, indicando a presença da atividade em Terras Indígenas e Unidades de Conservação - onde ela não é permitida, mas acontece mesmo sem autorizações ou eventuais registros. Os dados são do MapBiomas.
+        * As noted in this column, there is evidence of gold mining inside Indigenous
+        lands and protected areas - which is forbidden by Brazilian Law. Data by MapBiomas.<br>
+        ** Data on gold production and gold exports by state do not correlate perfectly. This
+        is because some states export gold without producing any, therefore there is no guarantee
+        about the origin of that gold. For example, the state of Sao Paulo was the second-largest
+        gold exporter in 2020, even though it did not produce a single gram of gold that year.
         
     </p>
 </div>
@@ -228,61 +228,61 @@
             const path = d3.sankeyLinkHorizontal();
 
             
-            const titles = {'temas-from-ausencia-irregularidade-ton': 'Ausência de irregularidades identificadas', 'temas-to-amazonas': 'Amazonas', 'temas-from-ti-uc-ton': 'Títulos em TIs ou UCs', 'temas-from-titulos-fantasmas-ton': '“Títulos fantasmas”', 'temas-from-extrapola-ton': 'Títulos com indícios de extração além dos limites', 'temas-from-sem-titulos-ton': 'Ouro sem a informação dos títulos de origem', 'temas-from-sem-registros': 'Ouro exportado sem registros na produção oficial', 'temas-to-amapa': 'Amapá', 'temas-to-bahia': 'Bahia', 'temas-to-goias': 'Goiás', 'temas-to-maranhao': 'Maranhão', 'temas-to-minas-gerais': 'Minas Gerais', 'temas-to-mato-grosso': 'Mato Grosso', 'temas-to-para': 'Pará', 'temas-to-pernambuco': 'Pernambuco', 'temas-to-parana': 'Paraná', 'temas-to-rio-grande-do-norte': 'Rio Grande do Norte', 'temas-to-rondonia': 'Rondônia', 'temas-to-roraima': 'Roraima', 'temas-to-santa-catarina': 'Santa Catarina', 'temas-to-tocantins': 'Tocantins', 'temas-to-sem-informacao': 'Sem informação', 'temas-to-sem-informacao-origem': 'Sem informação origem', 'exportacao-from-alagoas': 'Alagoas', 'exportacao-to-belgica': 'Bélgica', 'exportacao-from-amazonas': 'Amazonas', 'exportacao-to-alemanha': 'Alemanha', 'exportacao-to-emirados-arabes-unidos': 'Emirados Árabes Unidos', 'exportacao-to-estados-unidos': 'Estados Unidos', 'exportacao-to-hong-kong': 'Hong Kong', 'exportacao-to-india': 'Índia', 'exportacao-to-italia': 'Itália', 'exportacao-to-reino-unido': 'Reino Unido', 'exportacao-to-suica': 'Suíça', 'exportacao-from-amapa': 'Amapá', 'exportacao-to-canada': 'Canadá', 'exportacao-to-israel': 'Israel', 'exportacao-to-portugal': 'Portugal', 'exportacao-to-turquia': 'Turquia', 'exportacao-from-bahia': 'Bahia', 'exportacao-from-distrito-federal': 'Distrito Federal', 'exportacao-from-goias': 'Goiás', 'exportacao-to-africa-do-sul': 'África do Sul', 'exportacao-from-maranhao': 'Maranhão', 'exportacao-from-minas-gerais': 'Minas Gerais', 'exportacao-to-espanha': 'Espanha', 'exportacao-from-mato-grosso': 'Mato Grosso', 'exportacao-to-andorra': 'Andorra', 'exportacao-to-suriname': 'Suriname', 'exportacao-from-sem-informacao': 'Sem informação', 'exportacao-from-para': 'Pará', 'exportacao-from-paraiba': 'Paraíba', 'exportacao-from-pernambuco': 'Pernambuco', 'exportacao-from-parana': 'Paraná', 'exportacao-from-rio-de-janeiro': 'Rio de Janeiro', 'exportacao-to-franca': 'França', 'exportacao-to-peru': 'Peru', 'exportacao-to-taiwan-formosa': 'Taiwan (Formosa)', 'exportacao-from-rio-grande-do-norte': 'Rio Grande do Norte', 'exportacao-from-rondonia': 'Rondônia', 'exportacao-from-roraima': 'Roraima', 'exportacao-from-rio-grande-do-sul': 'Rio Grande do Sul', 'exportacao-from-sergipe': 'Sergipe', 'exportacao-from-sao-paulo': 'São Paulo', 'exportacao-to-argentina': 'Argentina', 'exportacao-to-coreia-do-sul': 'Coreia do Sul', 'exportacao-to-mexico': 'México', 'exportacao-to-singapura': 'Singapura', 'exportacao-to-tcheca-republica': 'Tcheca, República', 'exportacao-from-tocantins': 'Tocantins', 'exportacao-from-brasil-ouro-nao-exportado': 'Brasil (ouro não exportado)', 'exportacao-to-brasil-ouro-nao-exportado': 'Brasil (ouro não exportado)', 'AC': 'Acre', 'AL': 'Alagoas', 'AM': 'Amazonas', 'AP': 'Amapá', 'BA': 'Bahia', 'CE': 'Ceará', 'DF': 'Distrito Federal', 'ES': 'Espírito Santo', 'GO': 'Goiás', 'MA': 'Maranhão', 'MG': 'Minas Gerais', 'MS': 'Mato Grosso do Sul', 'MT': 'Mato Grosso', 'PA': 'Pará', 'PB': 'Paraíba', 'PE': 'Pernambuco', 'PI': 'Piauí', 'PR': 'Paraná', 'RJ': 'Rio de Janeiro', 'RN': 'Rio Grande do Norte', 'RO': 'Rondônia', 'RR': 'Roraima', 'RS': 'Rio Grande do Sul', 'SC': 'Santa Catarina', 'SE': 'Sergipe', 'SP': 'São Paulo', 'TO': 'Tocantins', 'ausencia-irregularidade-ton': 'Ausência de irregularidades identificadas', 'extrapola-ton': 'Títulos com indícios de extração além dos limites', 'sem-registros': 'Ouro exportado sem registros na produção oficial', 'sem-titulos-ton': 'Ouro sem a informação dos títulos de origem', 'ti-uc-ton': 'Títulos em TIs ou UCs', 'titulos-fantasmas-ton': '“Títulos fantasmas”', 'ti': 'Dentro das Terras Indígenas', 'uc': 'Dentro de Unidades de Conservação', 'resto': 'Em outras áreas', 'total': 'Área total'};
+            const titles = {'temas-from-ausencia-irregularidade-ton': 'No irregularities noted', 'temas-to-amazonas': 'Amazonas', 'temas-from-ti-uc-ton': 'Gold from mining titles overlapping with indigenous lands or protected areas', 'temas-from-titulos-fantasmas-ton': 'Gold from “shell titles” (without evidence of extraction)', 'temas-from-extrapola-ton': 'Gold from mining titles with evidence of extraction outside the designated mining area', 'temas-from-sem-titulos-ton': 'Gold without information on titles of origin', 'temas-from-sem-registros': 'Exported gold without official production records', 'temas-to-amapa': 'Amapá', 'temas-to-bahia': 'Bahia', 'temas-to-goias': 'Goiás', 'temas-to-maranhao': 'Maranhão', 'temas-to-minas-gerais': 'Minas Gerais', 'temas-to-mato-grosso': 'Mato Grosso', 'temas-to-para': 'Pará', 'temas-to-pernambuco': 'Pernambuco', 'temas-to-parana': 'Paraná', 'temas-to-rio-grande-do-norte': 'Rio Grande do Norte', 'temas-to-rondonia': 'Rondônia', 'temas-to-roraima': 'Roraima', 'temas-to-santa-catarina': 'Santa Catarina', 'temas-to-tocantins': 'Tocantins', 'temas-to-sem-informacao': 'Sem informação', 'temas-to-sem-informacao-origem': 'Sem informação origem', 'exportacao-from-alagoas': 'Alagoas', 'exportacao-to-belgica': 'Belgium', 'exportacao-from-amazonas': 'Amazonas', 'exportacao-to-alemanha': 'Germany', 'exportacao-to-emirados-arabes-unidos': 'United Arab Emirates', 'exportacao-to-estados-unidos': 'United States', 'exportacao-to-hong-kong': 'Hong Kong', 'exportacao-to-india': 'India', 'exportacao-to-italia': 'Italy', 'exportacao-to-reino-unido': 'UK', 'exportacao-to-suica': 'Switzerland', 'exportacao-from-amapa': 'Amapá', 'exportacao-to-canada': 'Canada', 'exportacao-to-israel': 'Israel', 'exportacao-to-portugal': 'Portugal', 'exportacao-to-turquia': 'Turkey', 'exportacao-from-bahia': 'Bahia', 'exportacao-from-distrito-federal': 'Distrito Federal', 'exportacao-from-goias': 'Goiás', 'exportacao-to-africa-do-sul': 'South Africa', 'exportacao-from-maranhao': 'Maranhão', 'exportacao-from-minas-gerais': 'Minas Gerais', 'exportacao-to-espanha': 'Spain', 'exportacao-from-mato-grosso': 'Mato Grosso', 'exportacao-to-andorra': 'Andorra', 'exportacao-to-suriname': 'Suriname', 'exportacao-from-sem-informacao': 'Sem informação', 'exportacao-from-para': 'Pará', 'exportacao-from-paraiba': 'Paraíba', 'exportacao-from-pernambuco': 'Pernambuco', 'exportacao-from-parana': 'Paraná', 'exportacao-from-rio-de-janeiro': 'Rio de Janeiro', 'exportacao-to-franca': 'France', 'exportacao-to-peru': 'Peru', 'exportacao-to-taiwan-formosa': 'Taiwan', 'exportacao-from-rio-grande-do-norte': 'Rio Grande do Norte', 'exportacao-from-rondonia': 'Rondônia', 'exportacao-from-roraima': 'Roraima', 'exportacao-from-rio-grande-do-sul': 'Rio Grande do Sul', 'exportacao-from-sergipe': 'Sergipe', 'exportacao-from-sao-paulo': 'São Paulo', 'exportacao-to-argentina': 'Argentina', 'exportacao-to-coreia-do-sul': 'South Korea', 'exportacao-to-mexico': 'Mexico', 'exportacao-to-singapura': 'Singapore', 'exportacao-to-tcheca-republica': 'Czech Republic', 'exportacao-from-tocantins': 'Tocantins', 'exportacao-from-brasil-ouro-nao-exportado': 'Brasil (not exported)', 'exportacao-to-brasil-ouro-nao-exportado': 'Brasil (not exported)', 'AC': 'Acre', 'AL': 'Alagoas', 'AM': 'Amazonas', 'AP': 'Amapá', 'BA': 'Bahia', 'CE': 'Ceará', 'DF': 'Distrito Federal', 'ES': 'Espírito Santo', 'GO': 'Goiás', 'MA': 'Maranhão', 'MG': 'Minas Gerais', 'MS': 'Mato Grosso do Sul', 'MT': 'Mato Grosso', 'PA': 'Pará', 'PB': 'Paraíba', 'PE': 'Pernambuco', 'PI': 'Piauí', 'PR': 'Paraná', 'RJ': 'Rio de Janeiro', 'RN': 'Rio Grande do Norte', 'RO': 'Rondônia', 'RR': 'Roraima', 'RS': 'Rio Grande do Sul', 'SC': 'Santa Catarina', 'SE': 'Sergipe', 'SP': 'São Paulo', 'TO': 'Tocantins', 'ausencia-irregularidade-ton': 'No irregularities noted', 'extrapola-ton': 'Gold from mining titles with evidence of extraction outside the designated mining area', 'sem-registros': 'Exported gold without official production records', 'sem-titulos-ton': 'Gold without information on titles of origin', 'ti-uc-ton': 'Gold from mining titles overlapping with indigenous lands or protected areas', 'titulos-fantasmas-ton': 'Gold from “shell titles” (without evidence of extraction)', 'ti': 'Inside indigenous lands', 'uc': 'Inside protected areas', 'resto': 'Other areas', 'total': 'Total area', 'Alemanha': 'Germany', 'Andorra': 'Andorra', 'Argentina': 'Argentina', 'Brasil (ouro não exportado)': 'Brasil (not exported)', 'Bélgica': 'Belgium', 'Canadá': 'Canada', 'Coreia do Sul': 'South Korea', 'Emirados Árabes Unidos': 'United Arab Emirates', 'Espanha': 'Spain', 'Estados Unidos': 'United States', 'França': 'France', 'Hong Kong': 'Hong Kong', 'Israel': 'Israel', 'Itália': 'Italy', 'México': 'Mexico', 'Peru': 'Peru', 'Portugal': 'Portugal', 'Reino Unido': 'UK', 'Singapura': 'Singapore', 'Suriname': 'Suriname', 'Suíça': 'Switzerland', 'Taiwan (Formosa)': 'Taiwan', 'Tcheca, República': 'Czech Republic', 'Turquia': 'Turkey', 'África do Sul': 'South Africa', 'Índia': 'India'};
             
 
             const areasData = [
                 {
                     label: "pa-total",
-                    value: 436641.8164,
+                    value: 451661.3352,
                     uf: "PA",
                     estado: "Pará",
                     tema: "total",
                 },{
                     label: "mt-total",
-                    value: 133313.3726,
+                    value: 138614.8443,
                     uf: "MT",
                     estado: "Mato Grosso",
                     tema: "total",
                 },{
                     label: "ap-total",
-                    value: 2975.34,
+                    value: 2979.90,
                     uf: "AP",
                     estado: "Amapá",
                     tema: "total",
                 },{
                     label: "ba-total",
-                    value: 2446.77,
+                    value: 2456.68,
                     uf: "BA",
                     estado: "Bahia",
                     tema: "total",
                 },{
                     label: "am-total",
-                    value: 1583.35,
+                    value: 1590.92,
                     uf: "AM",
                     estado: "Amazonas",
                     tema: "total",
                 },{
-                    label: "ma-total",
-                    value: 878.17,
-                    uf: "MA",
-                    estado: "Maranhão",
-                    tema: "total",
-                },{
                     label: "rr-total",
-                    value: 828.7661808,
+                    value: 886.9323828,
                     uf: "RR",
                     estado: "Roraima",
                     tema: "total",
                 },{
+                    label: "ma-total",
+                    value: 879.60,
+                    uf: "MA",
+                    estado: "Maranhão",
+                    tema: "total",
+                },{
                     label: "mg-total",
-                    value: 340.98,
+                    value: 342.07,
                     uf: "MG",
                     estado: "Minas Gerais",
                     tema: "total",
                 },{
                     label: "ro-total",
-                    value: 317.33,
+                    value: 321.47,
                     uf: "RO",
                     estado: "Rondônia",
                     tema: "total",
@@ -298,46 +298,46 @@
             const ufData = {
                 
                     AM: [
-                        [ "total", 1583.35 ]
+                        [ "total", 1590.92 ]
                         
                     ],
                     AP: [
-                        [ "total", 2975.34 ]
+                        [ "total", 2979.90 ]
                         
                     ],
                     BA: [
-                        [ "total", 2446.77 ]
+                        [ "total", 2456.68 ]
                         
                     ],
                     MA: [
-                        [ "total", 878.17 ]
+                        [ "total", 879.60 ]
                         
                     ],
                     MG: [
-                        [ "total", 340.98 ]
+                        [ "total", 342.07 ]
                         
                     ],
                     MT: [
-                        [ "ti", 277.3525833 ],
-                        [ "resto", 133036.02 ],
-                        [ "total", 133313.3726 ]
+                        [ "ti", 278.5442898 ],
+                        [ "resto", 138336.30 ],
+                        [ "total", 138614.8443 ]
                         
                     ],
                     PA: [
-                        [ "ti", 8978.997597 ],
-                        [ "uc", 23503.26882 ],
-                        [ "resto", 404159.55 ],
-                        [ "total", 436641.8164 ]
+                        [ "ti", 9467.908178 ],
+                        [ "uc", 23601.43704 ],
+                        [ "resto", 418591.99 ],
+                        [ "total", 451661.3352 ]
                         
                     ],
                     RO: [
-                        [ "total", 317.33 ]
+                        [ "total", 321.47 ]
                         
                     ],
                     RR: [
-                        [ "ti", 373.7461808 ],
-                        [ "resto", 455.02 ],
-                        [ "total", 828.7661808 ]
+                        [ "ti", 409.8823828 ],
+                        [ "resto", 477.05 ],
+                        [ "total", 886.9323828 ]
                         
                     ],
                     TO: [
@@ -400,153 +400,153 @@
                     ],
                 links: [
                     { source: "exportacao-from-alagoas", target: "exportacao-to-belgica", value: 0 },
-                    { source: "exportacao-from-amazonas", target: "exportacao-to-alemanha", value: 0 },
-                    { source: "exportacao-from-amazonas", target: "exportacao-to-belgica", value: 0.006 },
-                    { source: "exportacao-from-amazonas", target: "exportacao-to-emirados-arabes-unidos", value: 0.093 },
-                    { source: "exportacao-from-amazonas", target: "exportacao-to-estados-unidos", value: 0.096 },
-                    { source: "exportacao-from-amazonas", target: "exportacao-to-hong-kong", value: 0.057 },
-                    { source: "exportacao-from-amazonas", target: "exportacao-to-india", value: 0.087 },
-                    { source: "exportacao-from-amazonas", target: "exportacao-to-italia", value: 0.367 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-alemanha", value: 0.899 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-belgica", value: 0.001 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-emirados-arabes-unidos", value: 0.001 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-estados-unidos", value: 0.272 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-hong-kong", value: 0.025 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-india", value: 0.011 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-italia", value: 0.307 },
                     { source: "exportacao-from-amazonas", target: "exportacao-to-reino-unido", value: 0 },
-                    { source: "exportacao-from-amazonas", target: "exportacao-to-suica", value: 0 },
+                    { source: "exportacao-from-amazonas", target: "exportacao-to-suica", value: 0.043 },
                     { source: "exportacao-from-amapa", target: "exportacao-to-belgica", value: 0 },
-                    { source: "exportacao-from-amapa", target: "exportacao-to-canada", value: 1.719 },
-                    { source: "exportacao-from-amapa", target: "exportacao-to-emirados-arabes-unidos", value: 0.061 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-canada", value: 3.195 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-emirados-arabes-unidos", value: 0.034 },
                     { source: "exportacao-from-amapa", target: "exportacao-to-estados-unidos", value: 0 },
                     { source: "exportacao-from-amapa", target: "exportacao-to-hong-kong", value: 0 },
-                    { source: "exportacao-from-amapa", target: "exportacao-to-india", value: 0.118 },
-                    { source: "exportacao-from-amapa", target: "exportacao-to-israel", value: 0 },
-                    { source: "exportacao-from-amapa", target: "exportacao-to-italia", value: 0.01 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-india", value: 0.063 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-israel", value: 0.009 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-italia", value: 0.036 },
                     { source: "exportacao-from-amapa", target: "exportacao-to-portugal", value: 0 },
                     { source: "exportacao-from-amapa", target: "exportacao-to-reino-unido", value: 0 },
-                    { source: "exportacao-from-amapa", target: "exportacao-to-suica", value: 2.52 },
-                    { source: "exportacao-from-amapa", target: "exportacao-to-turquia", value: 0 },
-                    { source: "exportacao-from-bahia", target: "exportacao-to-belgica", value: 0.006 },
-                    { source: "exportacao-from-bahia", target: "exportacao-to-canada", value: 1.623 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-suica", value: 1.463 },
+                    { source: "exportacao-from-amapa", target: "exportacao-to-turquia", value: 0.031 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-belgica", value: 0.001 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-canada", value: 2.716 },
                     { source: "exportacao-from-bahia", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
                     { source: "exportacao-from-bahia", target: "exportacao-to-estados-unidos", value: 0 },
                     { source: "exportacao-from-bahia", target: "exportacao-to-hong-kong", value: 0 },
-                    { source: "exportacao-from-bahia", target: "exportacao-to-india", value: 0.576 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-india", value: 0 },
                     { source: "exportacao-from-bahia", target: "exportacao-to-reino-unido", value: 0 },
-                    { source: "exportacao-from-bahia", target: "exportacao-to-suica", value: 5.284 },
-                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-emirados-arabes-unidos", value: 0.153 },
-                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-estados-unidos", value: 0.192 },
-                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-india", value: 0.23 },
-                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-israel", value: 0 },
-                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-italia", value: 0 },
-                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-suica", value: 0 },
-                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-turquia", value: 0.13 },
-                    { source: "exportacao-from-goias", target: "exportacao-to-africa-do-sul", value: 0 },
-                    { source: "exportacao-from-goias", target: "exportacao-to-belgica", value: 0.014 },
-                    { source: "exportacao-from-goias", target: "exportacao-to-canada", value: 1.113 },
-                    { source: "exportacao-from-goias", target: "exportacao-to-emirados-arabes-unidos", value: 0.121 },
-                    { source: "exportacao-from-goias", target: "exportacao-to-estados-unidos", value: 0.174 },
+                    { source: "exportacao-from-bahia", target: "exportacao-to-suica", value: 5.338 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-emirados-arabes-unidos", value: 0.896 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-estados-unidos", value: 0 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-india", value: 0.133 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-israel", value: 0.01 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-italia", value: 0.065 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-suica", value: 0.015 },
+                    { source: "exportacao-from-distrito-federal", target: "exportacao-to-turquia", value: 0.054 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-africa-do-sul", value: 0.065 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-belgica", value: 0.003 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-canada", value: 2.422 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-emirados-arabes-unidos", value: 0.173 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-estados-unidos", value: 0.497 },
                     { source: "exportacao-from-goias", target: "exportacao-to-hong-kong", value: 0 },
-                    { source: "exportacao-from-goias", target: "exportacao-to-india", value: 0.675 },
-                    { source: "exportacao-from-goias", target: "exportacao-to-israel", value: 0 },
-                    { source: "exportacao-from-goias", target: "exportacao-to-italia", value: 4.4 },
-                    { source: "exportacao-from-goias", target: "exportacao-to-reino-unido", value: 3.477 },
-                    { source: "exportacao-from-goias", target: "exportacao-to-suica", value: 0.244 },
-                    { source: "exportacao-from-goias", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-india", value: 0.318 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-israel", value: 0.005 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-italia", value: 0.228 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-reino-unido", value: 2.213 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-suica", value: 0.114 },
+                    { source: "exportacao-from-goias", target: "exportacao-to-turquia", value: 0.182 },
                     { source: "exportacao-from-maranhao", target: "exportacao-to-belgica", value: 0.001 },
-                    { source: "exportacao-from-maranhao", target: "exportacao-to-canada", value: 0 },
+                    { source: "exportacao-from-maranhao", target: "exportacao-to-canada", value: 3.13 },
                     { source: "exportacao-from-maranhao", target: "exportacao-to-estados-unidos", value: 0 },
-                    { source: "exportacao-from-maranhao", target: "exportacao-to-suica", value: 2.298 },
-                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-africa-do-sul", value: 0 },
-                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-belgica", value: 0.009 },
-                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-canada", value: 14.108 },
-                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-emirados-arabes-unidos", value: 0.033 },
+                    { source: "exportacao-from-maranhao", target: "exportacao-to-suica", value: 1.048 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-africa-do-sul", value: 0.319 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-belgica", value: 0.013 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-canada", value: 24.398 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-emirados-arabes-unidos", value: 0.015 },
                     { source: "exportacao-from-minas-gerais", target: "exportacao-to-espanha", value: 0 },
-                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-estados-unidos", value: 0.361 },
-                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-hong-kong", value: 0 },
-                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-india", value: 2.412 },
-                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-italia", value: 0.006 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-estados-unidos", value: 1.283 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-hong-kong", value: 0.007 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-india", value: 0 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-italia", value: 0.002 },
                     { source: "exportacao-from-minas-gerais", target: "exportacao-to-portugal", value: 0 },
-                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-reino-unido", value: 13.925 },
-                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-suica", value: 8.834 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-reino-unido", value: 8.948 },
+                    { source: "exportacao-from-minas-gerais", target: "exportacao-to-suica", value: 5.111 },
                     { source: "exportacao-from-mato-grosso", target: "exportacao-to-andorra", value: 0 },
-                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-belgica", value: 2.087 },
-                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-canada", value: 0.139 },
-                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-emirados-arabes-unidos", value: 2.526 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-belgica", value: 0.68 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-canada", value: 0 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-emirados-arabes-unidos", value: 0.759 },
                     { source: "exportacao-from-mato-grosso", target: "exportacao-to-estados-unidos", value: 0 },
-                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-india", value: 1.745 },
-                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-india", value: 0.363 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-italia", value: 0.081 },
                     { source: "exportacao-from-mato-grosso", target: "exportacao-to-portugal", value: 0 },
-                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-reino-unido", value: 0.074 },
-                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-suica", value: 2.206 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-reino-unido", value: 0 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-suica", value: 3.381 },
                     { source: "exportacao-from-mato-grosso", target: "exportacao-to-suriname", value: 0 },
-                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-mato-grosso", target: "exportacao-to-turquia", value: 0.036 },
                     { source: "exportacao-from-sem-informacao", target: "exportacao-to-suica", value: 0 },
-                    { source: "exportacao-from-para", target: "exportacao-to-belgica", value: 0.564 },
-                    { source: "exportacao-from-para", target: "exportacao-to-emirados-arabes-unidos", value: 1.108 },
-                    { source: "exportacao-from-para", target: "exportacao-to-estados-unidos", value: 0.186 },
-                    { source: "exportacao-from-para", target: "exportacao-to-hong-kong", value: 0 },
-                    { source: "exportacao-from-para", target: "exportacao-to-india", value: 1.671 },
-                    { source: "exportacao-from-para", target: "exportacao-to-italia", value: 0.262 },
+                    { source: "exportacao-from-para", target: "exportacao-to-belgica", value: 1.255 },
+                    { source: "exportacao-from-para", target: "exportacao-to-emirados-arabes-unidos", value: 1.707 },
+                    { source: "exportacao-from-para", target: "exportacao-to-estados-unidos", value: 0.024 },
+                    { source: "exportacao-from-para", target: "exportacao-to-hong-kong", value: 0.181 },
+                    { source: "exportacao-from-para", target: "exportacao-to-india", value: 0.97 },
+                    { source: "exportacao-from-para", target: "exportacao-to-italia", value: 2.215 },
                     { source: "exportacao-from-para", target: "exportacao-to-portugal", value: 0 },
                     { source: "exportacao-from-para", target: "exportacao-to-reino-unido", value: 0 },
-                    { source: "exportacao-from-para", target: "exportacao-to-suica", value: 0 },
-                    { source: "exportacao-from-para", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-para", target: "exportacao-to-suica", value: 1.84 },
+                    { source: "exportacao-from-para", target: "exportacao-to-turquia", value: 0.066 },
                     { source: "exportacao-from-paraiba", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
                     { source: "exportacao-from-pernambuco", target: "exportacao-to-belgica", value: 0 },
-                    { source: "exportacao-from-parana", target: "exportacao-to-belgica", value: 0 },
-                    { source: "exportacao-from-parana", target: "exportacao-to-canada", value: 0.29 },
-                    { source: "exportacao-from-parana", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-belgica", value: 0.02 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-canada", value: 0.23 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-emirados-arabes-unidos", value: 0.058 },
                     { source: "exportacao-from-parana", target: "exportacao-to-estados-unidos", value: 0 },
-                    { source: "exportacao-from-parana", target: "exportacao-to-hong-kong", value: 0 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-hong-kong", value: 0.027 },
                     { source: "exportacao-from-parana", target: "exportacao-to-india", value: 0 },
-                    { source: "exportacao-from-parana", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-italia", value: 0.033 },
                     { source: "exportacao-from-parana", target: "exportacao-to-reino-unido", value: 0 },
                     { source: "exportacao-from-parana", target: "exportacao-to-suica", value: 0 },
-                    { source: "exportacao-from-parana", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-parana", target: "exportacao-to-turquia", value: 0.003 },
                     { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-alemanha", value: 0 },
-                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-belgica", value: 0.007 },
-                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-canada", value: 0 },
-                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-emirados-arabes-unidos", value: 0.144 },
-                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-estados-unidos", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-belgica", value: 0.106 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-canada", value: 0.006 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-emirados-arabes-unidos", value: 0.188 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-estados-unidos", value: 0.002 },
                     { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-franca", value: 0 },
-                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-india", value: 0.175 },
-                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-israel", value: 0 },
-                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-italia", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-india", value: 0.16 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-israel", value: 0.012 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-italia", value: 0.005 },
                     { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-peru", value: 0 },
                     { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-reino-unido", value: 0 },
-                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-suica", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-suica", value: 0.002 },
                     { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-taiwan-formosa", value: 0 },
-                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-rio-de-janeiro", target: "exportacao-to-turquia", value: 0.071 },
                     { source: "exportacao-from-rio-grande-do-norte", target: "exportacao-to-belgica", value: 0 },
                     { source: "exportacao-from-rio-grande-do-norte", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
                     { source: "exportacao-from-rio-grande-do-norte", target: "exportacao-to-estados-unidos", value: 0 },
-                    { source: "exportacao-from-rondonia", target: "exportacao-to-emirados-arabes-unidos", value: 0.313 },
+                    { source: "exportacao-from-rondonia", target: "exportacao-to-emirados-arabes-unidos", value: 0.109 },
                     { source: "exportacao-from-rondonia", target: "exportacao-to-estados-unidos", value: 0 },
-                    { source: "exportacao-from-rondonia", target: "exportacao-to-india", value: 0.581 },
-                    { source: "exportacao-from-rondonia", target: "exportacao-to-italia", value: 0.537 },
-                    { source: "exportacao-from-roraima", target: "exportacao-to-emirados-arabes-unidos", value: 0.239 },
-                    { source: "exportacao-from-roraima", target: "exportacao-to-india", value: 0.486 },
-                    { source: "exportacao-from-rio-grande-do-sul", target: "exportacao-to-emirados-arabes-unidos", value: 0.009 },
-                    { source: "exportacao-from-rio-grande-do-sul", target: "exportacao-to-estados-unidos", value: 0 },
+                    { source: "exportacao-from-rondonia", target: "exportacao-to-india", value: 0.107 },
+                    { source: "exportacao-from-rondonia", target: "exportacao-to-italia", value: 0.001 },
+                    { source: "exportacao-from-roraima", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-roraima", target: "exportacao-to-india", value: 0 },
+                    { source: "exportacao-from-rio-grande-do-sul", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
+                    { source: "exportacao-from-rio-grande-do-sul", target: "exportacao-to-estados-unidos", value: 0.001 },
                     { source: "exportacao-from-sergipe", target: "exportacao-to-belgica", value: 0 },
                     { source: "exportacao-from-sao-paulo", target: "exportacao-to-alemanha", value: 0 },
                     { source: "exportacao-from-sao-paulo", target: "exportacao-to-argentina", value: 0 },
-                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-belgica", value: 2.027 },
-                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-canada", value: 7.902 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-belgica", value: 1.762 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-canada", value: 4.836 },
                     { source: "exportacao-from-sao-paulo", target: "exportacao-to-coreia-do-sul", value: 0 },
-                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-emirados-arabes-unidos", value: 0.948 },
-                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-estados-unidos", value: 0.127 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-emirados-arabes-unidos", value: 3.201 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-estados-unidos", value: 0 },
                     { source: "exportacao-from-sao-paulo", target: "exportacao-to-franca", value: 0 },
-                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-hong-kong", value: 0 },
-                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-india", value: 1.341 },
-                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-israel", value: 0 },
-                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-italia", value: 0.051 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-hong-kong", value: 0.32 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-india", value: 2.47 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-israel", value: 0.055 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-italia", value: 2.516 },
                     { source: "exportacao-from-sao-paulo", target: "exportacao-to-mexico", value: 0 },
                     { source: "exportacao-from-sao-paulo", target: "exportacao-to-peru", value: 0 },
                     { source: "exportacao-from-sao-paulo", target: "exportacao-to-portugal", value: 0 },
                     { source: "exportacao-from-sao-paulo", target: "exportacao-to-reino-unido", value: 0 },
                     { source: "exportacao-from-sao-paulo", target: "exportacao-to-singapura", value: 0 },
-                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-suica", value: 0.044 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-suica", value: 1.804 },
                     { source: "exportacao-from-sao-paulo", target: "exportacao-to-tcheca-republica", value: 0 },
-                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-turquia", value: 0 },
+                    { source: "exportacao-from-sao-paulo", target: "exportacao-to-turquia", value: 0.61 },
                     { source: "exportacao-from-tocantins", target: "exportacao-to-canada", value: 0 },
-                    { source: "exportacao-from-tocantins", target: "exportacao-to-emirados-arabes-unidos", value: 0.002 },
+                    { source: "exportacao-from-tocantins", target: "exportacao-to-emirados-arabes-unidos", value: 0 },
                     { source: "exportacao-from-brasil-ouro-nao-exportado", target: "exportacao-to-brasil-ouro-nao-exportado", value: 0 }
                     ]
             }
@@ -580,59 +580,59 @@
                 links: [
                     { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-amazonas", value: 0 },
                     { source: "temas-from-ti-uc-ton", target: "temas-to-amazonas", value: 0 },
-                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-amazonas", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-amazonas", value: 0.08970448 },
                     { source: "temas-from-extrapola-ton", target: "temas-to-amazonas", value: 0 },
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-amazonas", value: 0 },
                     { source: "temas-from-sem-registros", target: "temas-to-amazonas", value: 0 },
-                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-amapa", value: 6.218126823 },
-                    { source: "temas-from-ti-uc-ton", target: "temas-to-amapa", value: 0.017957943 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-amapa", value: 4.85887536 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-amapa", value: 0.06065 },
                     { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-amapa", value: 0 },
-                    { source: "temas-from-extrapola-ton", target: "temas-to-amapa", value: 0.272080736 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-amapa", value: 0.27613521 },
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-amapa", value: 0 },
                     { source: "temas-from-sem-registros", target: "temas-to-amapa", value: 0 },
-                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-bahia", value: 2.494329774 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-bahia", value: 2.28288992 },
                     { source: "temas-from-ti-uc-ton", target: "temas-to-bahia", value: 0 },
-                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-bahia", value: 0.0218175 },
-                    { source: "temas-from-extrapola-ton", target: "temas-to-bahia", value: 4.871623535 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-bahia", value: 0 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-bahia", value: 5.63792444 },
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-bahia", value: 0 },
                     { source: "temas-from-sem-registros", target: "temas-to-bahia", value: 0 },
-                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-goias", value: 1.061729766 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-goias", value: 3.394864248 },
                     { source: "temas-from-ti-uc-ton", target: "temas-to-goias", value: 0 },
-                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-goias", value: 4.78778635 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-goias", value: 1.765917244 },
                     { source: "temas-from-extrapola-ton", target: "temas-to-goias", value: 0 },
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-goias", value: 0 },
                     { source: "temas-from-sem-registros", target: "temas-to-goias", value: 0 },
-                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-maranhao", value: 2.00413032 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-maranhao", value: 4.268253461 },
                     { source: "temas-from-ti-uc-ton", target: "temas-to-maranhao", value: 0 },
                     { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-maranhao", value: 0 },
                     { source: "temas-from-extrapola-ton", target: "temas-to-maranhao", value: 0 },
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-maranhao", value: 0 },
                     { source: "temas-from-sem-registros", target: "temas-to-maranhao", value: 0 },
-                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-minas-gerais", value: 30.2594303 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-minas-gerais", value: 26.93395963 },
                     { source: "temas-from-ti-uc-ton", target: "temas-to-minas-gerais", value: 0 },
-                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-minas-gerais", value: 4.241370185 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-minas-gerais", value: 5.53155319 },
                     { source: "temas-from-extrapola-ton", target: "temas-to-minas-gerais", value: 0 },
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-minas-gerais", value: 0 },
                     { source: "temas-from-sem-registros", target: "temas-to-minas-gerais", value: 0 },
-                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-mato-grosso", value: 4.94829167 },
-                    { source: "temas-from-ti-uc-ton", target: "temas-to-mato-grosso", value: 0 },
-                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-mato-grosso", value: 2.632865457 },
-                    { source: "temas-from-extrapola-ton", target: "temas-to-mato-grosso", value: 5.882503018 },
-                    { source: "temas-from-sem-titulos-ton", target: "temas-to-mato-grosso", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-mato-grosso", value: 5.953141419 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-mato-grosso", value: 0.02562 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-mato-grosso", value: 2.883063751 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-mato-grosso", value: 6.404225401 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-mato-grosso", value: 0.27285031 },
                     { source: "temas-from-sem-registros", target: "temas-to-mato-grosso", value: 0 },
-                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-para", value: 4.633752795 },
-                    { source: "temas-from-ti-uc-ton", target: "temas-to-para", value: 0.32808452 },
-                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-para", value: 4.380851233 },
-                    { source: "temas-from-extrapola-ton", target: "temas-to-para", value: 2.038252056 },
-                    { source: "temas-from-sem-titulos-ton", target: "temas-to-para", value: 0 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-para", value: 7.976363169 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-para", value: 1.31457491 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-para", value: 7.712018758 },
+                    { source: "temas-from-extrapola-ton", target: "temas-to-para", value: 2.368326255 },
+                    { source: "temas-from-sem-titulos-ton", target: "temas-to-para", value: 0.212184717 },
                     { source: "temas-from-sem-registros", target: "temas-to-para", value: 0 },
-                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-pernambuco", value: 0.00309916 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-pernambuco", value: 0.00113901 },
                     { source: "temas-from-ti-uc-ton", target: "temas-to-pernambuco", value: 0 },
                     { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-pernambuco", value: 0 },
                     { source: "temas-from-extrapola-ton", target: "temas-to-pernambuco", value: 0 },
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-pernambuco", value: 0 },
                     { source: "temas-from-sem-registros", target: "temas-to-pernambuco", value: 0 },
-                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-parana", value: 0.163836 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-parana", value: 0.320403 },
                     { source: "temas-from-ti-uc-ton", target: "temas-to-parana", value: 0 },
                     { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-parana", value: 0 },
                     { source: "temas-from-extrapola-ton", target: "temas-to-parana", value: 0 },
@@ -645,8 +645,8 @@
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-rio-grande-do-norte", value: 0 },
                     { source: "temas-from-sem-registros", target: "temas-to-rio-grande-do-norte", value: 0 },
                     { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-rondonia", value: 0 },
-                    { source: "temas-from-ti-uc-ton", target: "temas-to-rondonia", value: 0.18222017 },
-                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-rondonia", value: 0.63839951 },
+                    { source: "temas-from-ti-uc-ton", target: "temas-to-rondonia", value: 0.44177126 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-rondonia", value: 0.922165865 },
                     { source: "temas-from-extrapola-ton", target: "temas-to-rondonia", value: 0 },
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-rondonia", value: 0 },
                     { source: "temas-from-sem-registros", target: "temas-to-rondonia", value: 0 },
@@ -656,7 +656,7 @@
                     { source: "temas-from-extrapola-ton", target: "temas-to-roraima", value: 0 },
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-roraima", value: 0 },
                     { source: "temas-from-sem-registros", target: "temas-to-roraima", value: 0 },
-                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-santa-catarina", value: 0.000539902 },
+                    { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-santa-catarina", value: 0.000784701 },
                     { source: "temas-from-ti-uc-ton", target: "temas-to-santa-catarina", value: 0 },
                     { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-santa-catarina", value: 0 },
                     { source: "temas-from-extrapola-ton", target: "temas-to-santa-catarina", value: 0 },
@@ -664,7 +664,7 @@
                     { source: "temas-from-sem-registros", target: "temas-to-santa-catarina", value: 0 },
                     { source: "temas-from-ausencia-irregularidade-ton", target: "temas-to-tocantins", value: 0 },
                     { source: "temas-from-ti-uc-ton", target: "temas-to-tocantins", value: 0 },
-                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-tocantins", value: 0 },
+                    { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-tocantins", value: 0.043378481 },
                     { source: "temas-from-extrapola-ton", target: "temas-to-tocantins", value: 0 },
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-tocantins", value: 0 },
                     { source: "temas-from-sem-registros", target: "temas-to-tocantins", value: 0 },
@@ -679,7 +679,7 @@
                     { source: "temas-from-titulos-fantasmas-ton", target: "temas-to-sem-informacao-origem", value: 0 },
                     { source: "temas-from-extrapola-ton", target: "temas-to-sem-informacao-origem", value: 0 },
                     { source: "temas-from-sem-titulos-ton", target: "temas-to-sem-informacao-origem", value: 0 },
-                    { source: "temas-from-sem-registros", target: "temas-to-sem-informacao-origem", value: 11.24092128 }
+                    { source: "temas-from-sem-registros", target: "temas-to-sem-informacao-origem", value: 6.433261805 }
                     ]
             }
 
@@ -903,8 +903,8 @@
                         .html(d => {
                             return (
                                 "<div class='title'><h4>" + titles[x.id] + "</h4></div>" +
-                                "<div class='label'>QUANTIDADE</div>" +
-                                "<div class='value'>" + x.value.toLocaleString("pt-BR", options={maximumFractionDigits: 2}) + " toneladas</div>"
+                                "<div class='label'>VOLUME</div>" +
+                                "<div class='value'>" + x.value.toLocaleString("en", options={maximumFractionDigits: 2}) + " toneladas</div>"
                             );
                         })
                         .transition()
@@ -937,7 +937,7 @@
                         .html(d => {
                             return (
                                 "<div class='title'><h4>" + titles[x.source.id] + arrow + titles[x.target.id] + "</h4></div>" +
-                                "<div class='label'>QUANTIDADE</div>" +
+                                "<div class='label'>VOLUME</div>" +
                                 "<div class='value'>" + x.value.toLocaleString("pt-BR", options={maximumFractionDigits: 2}) + " toneladas</div>"
                             );
                         })
@@ -1076,15 +1076,15 @@
             .style("font-size", "14px")
             .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
             .attr("font-weight", "400")
-            .text("Indícios de mineração") // line 1
+            .text("Evidence of gold mining") // line 1
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("de ouro nos estados *")  // line 2
+            .text("in Brazilian")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
-            .text(" (ha)");  // line 3
+            .text("states *  (ha)");  // line 3
 
             // Indícios de ilegalidade na produção de ouro
             // Evidence of illegality in the Brazilian gold supply chain
@@ -1096,15 +1096,15 @@
             .style("font-size", "14px")
             .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
             .attr("font-weight", "400")
-            .text("Indícios de ilegalidade") // line 1
+            .text("Evidence of illegality") // line 1
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("na produção de ouro")  // line 2
+            .text("in the Brazilian gold")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
-            .text("");  // line 3
+            .text("supply chain");  // line 3
 
             // Produção de ouro por estado (t)
             // Gold production by state (t) **
@@ -1116,11 +1116,11 @@
             .style("font-size", "14px")
             .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
             .attr("font-weight", "400")
-            .text("Produção de") // line 1
+            .text("Gold production") // line 1
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("ouro por estado **")  // line 2
+            .text("by state **")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
@@ -1136,11 +1136,11 @@
             .style("font-size", "14px")
             .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
             .attr("font-weight", "400")
-            .text("Exportações de") // line 1
+            .text("Gold exports") // line 1
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("ouro por estado")  // line 2
+            .text("by state")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
@@ -1156,15 +1156,15 @@
             .style("font-size", "14px")
             .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
             .attr("font-weight", "400")
-            .text("Destino das") // line 1
+            .text("Destination of") // line 1
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("exportações de ouro")  // line 2
+            .text("Brazilian gold")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
-            .text("(t)");  // line 3
+            .text("exports (t)");  // line 3
 
             // Not reached in production; thus, commenting for now.
             // d3.select(".sankey-page").on("mousemove", () => {

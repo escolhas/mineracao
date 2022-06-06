@@ -186,12 +186,12 @@
 <div class="container footnote">
     <p class="label">
         
-        * Note que não é possível relacionar todo o volume de ouro produzido pelos
-        estados com as exportações estaduais. Isso porque alguns estados exportam,
-        mas não produzem ouro. Logo, não há como garantir de onde veio o ouro
-        exportado por eles. São Paulo, por exemplo, foi o segundo maior exportador
-        em 2020, mas não produziu um grama sequer.<br>
-        ** A primeira coluna mostra áreas com indícios de extração de ouro por estado, indicando a presença da atividade em Terras Indígenas e Unidades de Conservação - onde ela não é permitida, mas acontece mesmo sem autorizações ou eventuais registros. Os dados são do MapBiomas.
+        * As noted in this column, there is evidence of gold mining inside Indigenous
+        lands and protected areas - which is forbidden by Brazilian Law. Data by MapBiomas.<br>
+        ** Data on gold production and gold exports by state do not correlate perfectly. This
+        is because some states export gold without producing any, therefore there is no guarantee
+        about the origin of that gold. For example, the state of Sao Paulo was the second-largest
+        gold exporter in 2020, even though it did not produce a single gram of gold that year.
         
     </p>
 </div>
@@ -228,7 +228,7 @@
             const path = d3.sankeyLinkHorizontal();
 
             
-            const titles = {'temas-from-ausencia-irregularidade-ton': 'Ausência de irregularidades identificadas', 'temas-to-amazonas': 'Amazonas', 'temas-from-ti-uc-ton': 'Títulos em TIs ou UCs', 'temas-from-titulos-fantasmas-ton': '“Títulos fantasmas”', 'temas-from-extrapola-ton': 'Títulos com indícios de extração além dos limites', 'temas-from-sem-titulos-ton': 'Ouro sem a informação dos títulos de origem', 'temas-from-sem-registros': 'Ouro exportado sem registros na produção oficial', 'temas-to-amapa': 'Amapá', 'temas-to-bahia': 'Bahia', 'temas-to-goias': 'Goiás', 'temas-to-maranhao': 'Maranhão', 'temas-to-minas-gerais': 'Minas Gerais', 'temas-to-mato-grosso': 'Mato Grosso', 'temas-to-para': 'Pará', 'temas-to-pernambuco': 'Pernambuco', 'temas-to-parana': 'Paraná', 'temas-to-rio-grande-do-norte': 'Rio Grande do Norte', 'temas-to-rondonia': 'Rondônia', 'temas-to-roraima': 'Roraima', 'temas-to-santa-catarina': 'Santa Catarina', 'temas-to-tocantins': 'Tocantins', 'temas-to-sem-informacao': 'Sem informação', 'temas-to-sem-informacao-origem': 'Sem informação origem', 'exportacao-from-alagoas': 'Alagoas', 'exportacao-to-belgica': 'Bélgica', 'exportacao-from-amazonas': 'Amazonas', 'exportacao-to-alemanha': 'Alemanha', 'exportacao-to-emirados-arabes-unidos': 'Emirados Árabes Unidos', 'exportacao-to-estados-unidos': 'Estados Unidos', 'exportacao-to-hong-kong': 'Hong Kong', 'exportacao-to-india': 'Índia', 'exportacao-to-italia': 'Itália', 'exportacao-to-reino-unido': 'Reino Unido', 'exportacao-to-suica': 'Suíça', 'exportacao-from-amapa': 'Amapá', 'exportacao-to-canada': 'Canadá', 'exportacao-to-israel': 'Israel', 'exportacao-to-portugal': 'Portugal', 'exportacao-to-turquia': 'Turquia', 'exportacao-from-bahia': 'Bahia', 'exportacao-from-distrito-federal': 'Distrito Federal', 'exportacao-from-goias': 'Goiás', 'exportacao-to-africa-do-sul': 'África do Sul', 'exportacao-from-maranhao': 'Maranhão', 'exportacao-from-minas-gerais': 'Minas Gerais', 'exportacao-to-espanha': 'Espanha', 'exportacao-from-mato-grosso': 'Mato Grosso', 'exportacao-to-andorra': 'Andorra', 'exportacao-to-suriname': 'Suriname', 'exportacao-from-sem-informacao': 'Sem informação', 'exportacao-from-para': 'Pará', 'exportacao-from-paraiba': 'Paraíba', 'exportacao-from-pernambuco': 'Pernambuco', 'exportacao-from-parana': 'Paraná', 'exportacao-from-rio-de-janeiro': 'Rio de Janeiro', 'exportacao-to-franca': 'França', 'exportacao-to-peru': 'Peru', 'exportacao-to-taiwan-formosa': 'Taiwan (Formosa)', 'exportacao-from-rio-grande-do-norte': 'Rio Grande do Norte', 'exportacao-from-rondonia': 'Rondônia', 'exportacao-from-roraima': 'Roraima', 'exportacao-from-rio-grande-do-sul': 'Rio Grande do Sul', 'exportacao-from-sergipe': 'Sergipe', 'exportacao-from-sao-paulo': 'São Paulo', 'exportacao-to-argentina': 'Argentina', 'exportacao-to-coreia-do-sul': 'Coreia do Sul', 'exportacao-to-mexico': 'México', 'exportacao-to-singapura': 'Singapura', 'exportacao-to-tcheca-republica': 'Tcheca, República', 'exportacao-from-tocantins': 'Tocantins', 'exportacao-from-brasil-ouro-nao-exportado': 'Brasil (ouro não exportado)', 'exportacao-to-brasil-ouro-nao-exportado': 'Brasil (ouro não exportado)', 'AC': 'Acre', 'AL': 'Alagoas', 'AM': 'Amazonas', 'AP': 'Amapá', 'BA': 'Bahia', 'CE': 'Ceará', 'DF': 'Distrito Federal', 'ES': 'Espírito Santo', 'GO': 'Goiás', 'MA': 'Maranhão', 'MG': 'Minas Gerais', 'MS': 'Mato Grosso do Sul', 'MT': 'Mato Grosso', 'PA': 'Pará', 'PB': 'Paraíba', 'PE': 'Pernambuco', 'PI': 'Piauí', 'PR': 'Paraná', 'RJ': 'Rio de Janeiro', 'RN': 'Rio Grande do Norte', 'RO': 'Rondônia', 'RR': 'Roraima', 'RS': 'Rio Grande do Sul', 'SC': 'Santa Catarina', 'SE': 'Sergipe', 'SP': 'São Paulo', 'TO': 'Tocantins', 'ausencia-irregularidade-ton': 'Ausência de irregularidades identificadas', 'extrapola-ton': 'Títulos com indícios de extração além dos limites', 'sem-registros': 'Ouro exportado sem registros na produção oficial', 'sem-titulos-ton': 'Ouro sem a informação dos títulos de origem', 'ti-uc-ton': 'Títulos em TIs ou UCs', 'titulos-fantasmas-ton': '“Títulos fantasmas”', 'ti': 'Dentro das Terras Indígenas', 'uc': 'Dentro de Unidades de Conservação', 'resto': 'Em outras áreas', 'total': 'Área total'};
+            const titles = {'temas-from-ausencia-irregularidade-ton': 'No irregularities noted', 'temas-to-amazonas': 'Amazonas', 'temas-from-ti-uc-ton': 'Gold from mining titles overlapping with indigenous lands or protected areas', 'temas-from-titulos-fantasmas-ton': 'Gold from “shell titles” (without evidence of extraction)', 'temas-from-extrapola-ton': 'Gold from mining titles with evidence of extraction outside the designated mining area', 'temas-from-sem-titulos-ton': 'Gold without information on titles of origin', 'temas-from-sem-registros': 'Exported gold without official production records', 'temas-to-amapa': 'Amapá', 'temas-to-bahia': 'Bahia', 'temas-to-goias': 'Goiás', 'temas-to-maranhao': 'Maranhão', 'temas-to-minas-gerais': 'Minas Gerais', 'temas-to-mato-grosso': 'Mato Grosso', 'temas-to-para': 'Pará', 'temas-to-pernambuco': 'Pernambuco', 'temas-to-parana': 'Paraná', 'temas-to-rio-grande-do-norte': 'Rio Grande do Norte', 'temas-to-rondonia': 'Rondônia', 'temas-to-roraima': 'Roraima', 'temas-to-santa-catarina': 'Santa Catarina', 'temas-to-tocantins': 'Tocantins', 'temas-to-sem-informacao': 'Sem informação', 'temas-to-sem-informacao-origem': 'Sem informação origem', 'exportacao-from-alagoas': 'Alagoas', 'exportacao-to-belgica': 'Belgium', 'exportacao-from-amazonas': 'Amazonas', 'exportacao-to-alemanha': 'Germany', 'exportacao-to-emirados-arabes-unidos': 'United Arab Emirates', 'exportacao-to-estados-unidos': 'United States', 'exportacao-to-hong-kong': 'Hong Kong', 'exportacao-to-india': 'India', 'exportacao-to-italia': 'Italy', 'exportacao-to-reino-unido': 'UK', 'exportacao-to-suica': 'Switzerland', 'exportacao-from-amapa': 'Amapá', 'exportacao-to-canada': 'Canada', 'exportacao-to-israel': 'Israel', 'exportacao-to-portugal': 'Portugal', 'exportacao-to-turquia': 'Turkey', 'exportacao-from-bahia': 'Bahia', 'exportacao-from-distrito-federal': 'Distrito Federal', 'exportacao-from-goias': 'Goiás', 'exportacao-to-africa-do-sul': 'South Africa', 'exportacao-from-maranhao': 'Maranhão', 'exportacao-from-minas-gerais': 'Minas Gerais', 'exportacao-to-espanha': 'Spain', 'exportacao-from-mato-grosso': 'Mato Grosso', 'exportacao-to-andorra': 'Andorra', 'exportacao-to-suriname': 'Suriname', 'exportacao-from-sem-informacao': 'Sem informação', 'exportacao-from-para': 'Pará', 'exportacao-from-paraiba': 'Paraíba', 'exportacao-from-pernambuco': 'Pernambuco', 'exportacao-from-parana': 'Paraná', 'exportacao-from-rio-de-janeiro': 'Rio de Janeiro', 'exportacao-to-franca': 'France', 'exportacao-to-peru': 'Peru', 'exportacao-to-taiwan-formosa': 'Taiwan', 'exportacao-from-rio-grande-do-norte': 'Rio Grande do Norte', 'exportacao-from-rondonia': 'Rondônia', 'exportacao-from-roraima': 'Roraima', 'exportacao-from-rio-grande-do-sul': 'Rio Grande do Sul', 'exportacao-from-sergipe': 'Sergipe', 'exportacao-from-sao-paulo': 'São Paulo', 'exportacao-to-argentina': 'Argentina', 'exportacao-to-coreia-do-sul': 'South Korea', 'exportacao-to-mexico': 'Mexico', 'exportacao-to-singapura': 'Singapore', 'exportacao-to-tcheca-republica': 'Czech Republic', 'exportacao-from-tocantins': 'Tocantins', 'exportacao-from-brasil-ouro-nao-exportado': 'Brasil (not exported)', 'exportacao-to-brasil-ouro-nao-exportado': 'Brasil (not exported)', 'AC': 'Acre', 'AL': 'Alagoas', 'AM': 'Amazonas', 'AP': 'Amapá', 'BA': 'Bahia', 'CE': 'Ceará', 'DF': 'Distrito Federal', 'ES': 'Espírito Santo', 'GO': 'Goiás', 'MA': 'Maranhão', 'MG': 'Minas Gerais', 'MS': 'Mato Grosso do Sul', 'MT': 'Mato Grosso', 'PA': 'Pará', 'PB': 'Paraíba', 'PE': 'Pernambuco', 'PI': 'Piauí', 'PR': 'Paraná', 'RJ': 'Rio de Janeiro', 'RN': 'Rio Grande do Norte', 'RO': 'Rondônia', 'RR': 'Roraima', 'RS': 'Rio Grande do Sul', 'SC': 'Santa Catarina', 'SE': 'Sergipe', 'SP': 'São Paulo', 'TO': 'Tocantins', 'ausencia-irregularidade-ton': 'No irregularities noted', 'extrapola-ton': 'Gold from mining titles with evidence of extraction outside the designated mining area', 'sem-registros': 'Exported gold without official production records', 'sem-titulos-ton': 'Gold without information on titles of origin', 'ti-uc-ton': 'Gold from mining titles overlapping with indigenous lands or protected areas', 'titulos-fantasmas-ton': 'Gold from “shell titles” (without evidence of extraction)', 'ti': 'Inside indigenous lands', 'uc': 'Inside protected areas', 'resto': 'Other areas', 'total': 'Total area', 'Alemanha': 'Germany', 'Andorra': 'Andorra', 'Argentina': 'Argentina', 'Brasil (ouro não exportado)': 'Brasil (not exported)', 'Bélgica': 'Belgium', 'Canadá': 'Canada', 'Coreia do Sul': 'South Korea', 'Emirados Árabes Unidos': 'United Arab Emirates', 'Espanha': 'Spain', 'Estados Unidos': 'United States', 'França': 'France', 'Hong Kong': 'Hong Kong', 'Israel': 'Israel', 'Itália': 'Italy', 'México': 'Mexico', 'Peru': 'Peru', 'Portugal': 'Portugal', 'Reino Unido': 'UK', 'Singapura': 'Singapore', 'Suriname': 'Suriname', 'Suíça': 'Switzerland', 'Taiwan (Formosa)': 'Taiwan', 'Tcheca, República': 'Czech Republic', 'Turquia': 'Turkey', 'África do Sul': 'South Africa', 'Índia': 'India'};
             
 
             const areasData = [
@@ -903,8 +903,8 @@
                         .html(d => {
                             return (
                                 "<div class='title'><h4>" + titles[x.id] + "</h4></div>" +
-                                "<div class='label'>QUANTIDADE</div>" +
-                                "<div class='value'>" + x.value.toLocaleString("pt-BR", options={maximumFractionDigits: 2}) + " toneladas</div>"
+                                "<div class='label'>VOLUME</div>" +
+                                "<div class='value'>" + x.value.toLocaleString("en", options={maximumFractionDigits: 2}) + " toneladas</div>"
                             );
                         })
                         .transition()
@@ -937,7 +937,7 @@
                         .html(d => {
                             return (
                                 "<div class='title'><h4>" + titles[x.source.id] + arrow + titles[x.target.id] + "</h4></div>" +
-                                "<div class='label'>QUANTIDADE</div>" +
+                                "<div class='label'>VOLUME</div>" +
                                 "<div class='value'>" + x.value.toLocaleString("pt-BR", options={maximumFractionDigits: 2}) + " toneladas</div>"
                             );
                         })
@@ -1076,15 +1076,15 @@
             .style("font-size", "14px")
             .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
             .attr("font-weight", "400")
-            .text("Indícios de mineração") // line 1
+            .text("Evidence of gold mining") // line 1
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("de ouro nos estados *")  // line 2
+            .text("in Brazilian")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
-            .text(" (ha)");  // line 3
+            .text("states *  (ha)");  // line 3
 
             // Indícios de ilegalidade na produção de ouro
             // Evidence of illegality in the Brazilian gold supply chain
@@ -1096,15 +1096,15 @@
             .style("font-size", "14px")
             .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
             .attr("font-weight", "400")
-            .text("Indícios de ilegalidade") // line 1
+            .text("Evidence of illegality") // line 1
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("na produção de ouro")  // line 2
+            .text("in the Brazilian gold")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
-            .text("");  // line 3
+            .text("supply chain");  // line 3
 
             // Produção de ouro por estado (t)
             // Gold production by state (t) **
@@ -1116,11 +1116,11 @@
             .style("font-size", "14px")
             .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
             .attr("font-weight", "400")
-            .text("Produção de") // line 1
+            .text("Gold production") // line 1
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("ouro por estado **")  // line 2
+            .text("by state **")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
@@ -1136,11 +1136,11 @@
             .style("font-size", "14px")
             .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
             .attr("font-weight", "400")
-            .text("Exportações de") // line 1
+            .text("Gold exports") // line 1
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("ouro por estado")  // line 2
+            .text("by state")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
@@ -1156,15 +1156,15 @@
             .style("font-size", "14px")
             .attr("font-family", "'IBM Plex Sans Hebrew', sans-serif")
             .attr("font-weight", "400")
-            .text("Destino das") // line 1
+            .text("Destination of") // line 1
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 20)
-            .text("exportações de ouro")  // line 2
+            .text("Brazilian gold")  // line 2
             .append("tspan")
             .attr("x", (nodeCenter))
             .attr("y", 20 + 40)
-            .text("(t)");  // line 3
+            .text("exports (t)");  // line 3
 
             // Not reached in production; thus, commenting for now.
             // d3.select(".sankey-page").on("mousemove", () => {
